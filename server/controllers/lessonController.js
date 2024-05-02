@@ -1,14 +1,14 @@
-// const uuid = require('uuid')
-// const path = require('path');
-// const {Lesson /* , DeviceInfo */} = require('../models/models')
+const uuid = require('uuid')
+const path = require('path');
+const {Lesson /* , DeviceInfo */} = require('../models/models')
 const ApiError = require('../error/ApiError')
 class LessonController {
-  async create(req, res /* , next */) {
-    // try {
-    //   let {name, price, brandId, typeId, info} = req.body
-    // const {img} = req.files
-    // let fileName = uuid.v4() + ".jpg"
-    // img.mv(path.resolve(__dirname, '..', 'static', fileName))
+  async create(req, res, next) {
+    try {
+    let {title, lessonAgeLessonAgeID, lessonCategoryLessonCategoryID} = req.body
+    const {img} = req.files
+    let fileName = uuid.v4() + ".jpg"
+    img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
     // if(info) {
     //   info = JSON.parse(info)
@@ -20,12 +20,12 @@ class LessonController {
     //   }))
     // }
 
-    // const device = await Device.create({name, price, brandId, typeId, img: fileName})
+    const lesson = await Lesson.create({title, lessonAgeLessonAgeID, lessonCategoryLessonCategoryID, img: fileName})
 
-    // return res.json(device)
-    // } catch (e){
-    //   next(ApiError.badRequest(e.message))
-    // }
+    return res.json(lesson)
+    } catch (e){
+      next(ApiError.badRequest(e.message))
+    }
     
   }
   async getAll(req, res) {

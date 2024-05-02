@@ -1,14 +1,14 @@
-// const uuid = require('uuid')
-// const path = require('path');
-// const {Lesson /* , DeviceInfo */} = require('../models/models')
+const uuid = require('uuid')
+const path = require('path');
+const {Event} = require('../models/models')
 const ApiError = require('../error/ApiError')
 class EventController {
-  async create(req, res /* , next */) {
-    // try {
-    //   let {name, price, brandId, typeId, info} = req.body
-    // const {img} = req.files
-    // let fileName = uuid.v4() + ".jpg"
-    // img.mv(path.resolve(__dirname, '..', 'static', fileName))
+  async create(req, res, next) {
+    try {
+      let {title, description, dateAndTime, location, link, eventCategoryEventCategoryID} = req.body
+      const {img} = req.files
+      let fileName = uuid.v4() + ".jpg"
+      img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
     // if(info) {
     //   info = JSON.parse(info)
@@ -20,12 +20,12 @@ class EventController {
     //   }))
     // }
 
-    // const device = await Device.create({name, price, brandId, typeId, img: fileName})
+    const event = await Event.create({title, description, dateAndTime, location, link, eventCategoryEventCategoryID, img: fileName})
 
-    // return res.json(device)
-    // } catch (e){
-    //   next(ApiError.badRequest(e.message))
-    // }
+    return res.json(event)
+    } catch (e){
+      next(ApiError.badRequest(e.message))
+    }
     
   }
   async getAll(req, res) {

@@ -1,33 +1,58 @@
-// const uuid = require('uuid')
-// const path = require('path');
-// const {Lesson /* , DeviceInfo */} = require('../models/models')
+const uuid = require('uuid')
+const path = require('path');
+const {Material} = require('../models/models')
 const ApiError = require('../error/ApiError')
 class MaterialController {
-  async create(req, res /* , next */) {
-    // try {
-    //   let {name, price, brandId, typeId, info} = req.body
-    // const {img} = req.files
-    // let fileName = uuid.v4() + ".jpg"
-    // img.mv(path.resolve(__dirname, '..', 'static', fileName))
+  async create(req, res, next) {
+    try {
+      let { title, materialCategoryMaterialCategoryID } = req.body;
 
-    // if(info) {
-    //   info = JSON.parse(info)
-    //   info.forEach(i =>
-    //   DeviceInfo.create({
-    //     title: i.title,
-    //     description: i.description,
-    //     deviceId: device.id
-    //   }))
-    // }
+      // Проверка наличия файла в запросе
+      if (!req.files || Object.keys(req.files).length === 0) {
+        return next(ApiError.badRequest('No files were uploaded.'));
+      }
 
-    // const device = await Device.create({name, price, brandId, typeId, img: fileName})
+      const { file } = req.files;
 
-    // return res.json(device)
-    // } catch (e){
-    //   next(ApiError.badRequest(e.message))
-    // }
-    
+      // Проверка расширения файла
+      const fileExtension = path.extname(file.name).toLowerCase();
+      const allowedExtensions = ['.docx', '.pptx'];
+      if (!allowedExtensions.includes(fileExtension)) {
+        return next(ApiError.badRequest('Invalid file type. Only .docx and .pptx files are allowed.'));
+      }
+
+      // Генерация уникального имени файла и его сохранение
+      let fileName = uuid.v4() + fileExtension;
+      file.mv(path.resolve(__dirname, '..', 'static', 'materials', fileName));
+
+      const material = await Material.create({
+        title,
+        materialCategoryMaterialCategoryID,
+        file: fileName
+      });
+
+      return res.json(material);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
+
+
+  // async create(req, res, next) {
+  //   try {
+  //     let {title, materialCategoryMaterialCategoryID} = req.body
+  //     const {file} = req.files
+  //     let fileName = uuid.v4() + ".docx"
+  //     file.mv(path.resolve(__dirname, '..', 'static', fileName))
+
+  //   const material = await Material.create({title, materialCategoryMaterialCategoryID, file: fileName})
+
+  //   return res.json(material)
+  //   } catch (e){
+  //     next(ApiError.badRequest(e.message))
+  //   }
+    
+  // }
   async getAll(req, res) {
   //   let {brandId, typeId, limit, page} = req.query
   //   page = page || 1

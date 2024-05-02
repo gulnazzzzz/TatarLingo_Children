@@ -33,6 +33,7 @@ const UserAward = sequelize.define('user_award', {
 const Material = sequelize.define('material', {
     materialID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     file: {type: DataTypes.STRING, allowNull: false},
+    title: {type: DataTypes.STRING, unique: true}
 })
 
 const Event = sequelize.define('event', {
