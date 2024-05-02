@@ -4,10 +4,11 @@ const {DataTypes} = require('sequelize')
 const User = sequelize.define('user', {
     userID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, allowNull: false},
-    photo: {type: DataTypes.STRING, allowNull: false},
+    photo: {type: DataTypes.STRING},
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
+    birthday: {type: DataTypes.DATE},
 })
 
 const Lesson = sequelize.define('lesson', {
@@ -28,7 +29,7 @@ const Award = sequelize.define('award', {
 
 const UserAward = sequelize.define('user_award', {
     user_AwardID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-})
+});
 
 const Material = sequelize.define('material', {
     materialID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
