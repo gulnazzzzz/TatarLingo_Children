@@ -27,7 +27,7 @@ const Award = sequelize.define('award', {
 })
 
 const UserAward = sequelize.define('user_award', {
-    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    user_AwardID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
 
 const Material = sequelize.define('material', {
@@ -36,7 +36,7 @@ const Material = sequelize.define('material', {
 })
 
 const Event = sequelize.define('event', {
-    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    eventID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     img: {type: DataTypes.STRING, allowNull: false},
     title: {type: DataTypes.STRING, unique: true},
     description: {type: DataTypes.STRING, allowNull: false},
@@ -55,13 +55,13 @@ const EventCategory = sequelize.define('eventCategory', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
 })
 
-const LessonCategory = sequelize.define('lessonCategory', {
-    lessonCategoryID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+const LessonAge = sequelize.define('lessonAge', {
+    lessonAgeID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
 })
 
-const LessonAge = sequelize.define('lessonAge', {
-    lessonAgeID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+const LessonCategory = sequelize.define('lessonCategory', {
+    lessonCategoryID: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
 })
 
