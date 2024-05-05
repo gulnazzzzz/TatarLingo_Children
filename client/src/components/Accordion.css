@@ -1,0 +1,82 @@
+/* Accordion.css */
+.accordion {
+  width: 100%;
+  max-width: 660px;
+  /* или на ваше усмотрение */
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.accordion-item_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 20px;
+  /* Отступы вокруг текста и иконки */
+  font-size: 16px;
+  /* Размер шрифта для заголовка */
+  font-weight: 500;
+  /* Вес шрифта для заголовка */
+  color: #333;
+  /* Цвет текста */
+}
+
+.accordion-item_title:hover {
+  color: #DC6C58;
+  /* Цвет при наведении */
+}
+
+.accordion-item_title:hover,
+.accordion-item_title:hover::after {
+  cursor: pointer;
+  color: #DC6C58;
+}
+
+.accordion-item_title.active {
+  color: #DC6C58;
+  border-bottom: 1px solid #ffffff;
+}
+
+.accordion-item_title::after {
+  position: absolute;
+  float: right;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+}
+.content {
+  opacity: 0;
+  padding: 0 1.4rem;
+  max-height: 0;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  clear: both;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.35s ease;
+  /* Уберите задержку перед изменением max-height */
+}
+
+.content.active {
+  opacity: 1;
+  padding: 0.6rem 1.4rem;
+  /* Измените padding для более плавного эффекта */
+  max-height: 500px;
+  /* Используйте достаточно большое значение */
+}
+
+/* Опционально: Добавьте медиа-запросы для адаптивного дизайна */
+/* @media (max-width: 768px) {
+  .accordion {
+    padding: 0 10px;
+  }
+
+  .accordion-item_title {
+    padding: 10px 15px;
+  }
+
+  .content {
+    padding: 10px 15px;
+  }
+} */
