@@ -20,12 +20,12 @@ export default class LessonStore {
           {lessonID: 2, title: "Эйдэ саныйбыз 1, 2, 3", img: `https://unsplash.com/photos/a-large-building-with-a-clock-tower-in-the-middle-of-a-garden-dyMIyTQloTU`},
           {lessonID: 3, title: "Эйдэ санамыйбыз 1, 2, 3", img: `https://unsplash.com/photos/a-large-building-with-a-clock-tower-in-the-middle-of-a-garden-dyMIyTQloTU`},
         ]
-        // this._selectedAge = {
+        this._selectedAge = {
 
-        // }
-        // this._selectedCategory = {
+        }
+        this._selectedCategory = {
 
-        // }
+        }
         makeAutoObservable(this)
     }
 
@@ -39,14 +39,14 @@ export default class LessonStore {
         this._lessons = lessons
     }
 
-    // setSelectedType(type) {
-    //     this.setPage(1)
-    //     this._selectedType = type
-    // }
-    // setSelectedBrand(brand) {
-    //     this.setPage(1)
-    //     this._selectedBrand = brand
-    // }
+    setSelectedAge(lessonAge) {
+        // this.setPage(1)
+        this._selectedAge = lessonAge
+    }
+    setSelectedCategory(lessonCategory) {
+        // this.setPage(1)
+        this._selectedCategory = lessonCategory
+    }
     // setPage(page) {
     //     this._page = page
     // }
@@ -63,12 +63,12 @@ export default class LessonStore {
     get lessons() {
         return this._lessons
     }
-    // get selectedType() {
-    //     return this._selectedType
-    // }
-    // get selectedBrand() {
-    //     return this._selectedBrand
-    // }
+    get selectedAge() {
+        return this._selectedAge
+    }
+    get selectedCategory() {
+        return this._selectedCategory
+    }
     // get totalCount() {
     //     return this._totalCount
     // }

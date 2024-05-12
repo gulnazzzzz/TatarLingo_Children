@@ -19,10 +19,10 @@ export default class EventStore {
         makeAutoObservable(this)
     }
 
-    setAges(eventCategories) {
+    setEventCategories(eventCategories) {
         this._eventCategories = eventCategories
     }
-    setCategories(events) {
+    setEvents(events) {
         this._events = events
     }
     

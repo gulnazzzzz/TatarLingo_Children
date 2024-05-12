@@ -52,37 +52,44 @@ export default function Main() {
             <img className="mainView__img" src={background} alt="Background" />
             <div className="main_buttons">
               <button 
-                className={`mainView_button ${background === MainBlock ? 'active_button' : ''}`} 
+                className={`mainView_button original-text ${background === MainBlock ? 'active_button' : ''}`} 
                 onClick={handleFirstButton}>
                 Детсадовцы 3+
+                <span className="translated-text">Бакчага йоргэн балалар</span>
               </button>
               <button 
-                className={`mainView_button ${background === Second ? 'active_button' : ''}`} 
+                className={`mainView_button original-text ${background === Second ? 'active_button' : ''}`} 
                 onClick={handleSecondButton}>
                 Дошколята 6-7
+                <span className="translated-text">Мэктэпкэчэ яшьтэге балалар</span>
               </button>
             </div>
           </div>
 
 
-          <p className="main__title">Что такое TatarLingo?</p>
+          <p className="main__title original-text">Что такое TatarLingo?
+          <span className="translated-text">TatarLingo - нэрсэ ул?</span></p>
           <div className="mainView__blockw" >
             <img className="mainView__img" src={backgroundWhat} alt="Background" />
             <div className="main_buttonsw">
               <button 
-                className={`mainView_buttonw ${backgroundWhat === MainLearn ? 'active_buttonw' : ''}`} 
+                className={`mainView_buttonw original-text ${backgroundWhat === MainLearn ? 'active_buttonw' : ''}`} 
                 onClick={handleLearnButton}>
                 Учись
+                <span className="translated-text">Ойрэн</span>
               </button>
               <button 
-                className={`mainView_buttonw ${backgroundWhat === MainPlay ? 'active_buttonw' : ''}`} 
+                className={`mainView_buttonw original-text ${backgroundWhat === MainPlay ? 'active_buttonw' : ''}`} 
                 onClick={handlePlayButton}>
                 Играй
+                <span className="translated-text">Уйна</span>
               </button>
             </div>
           </div>
 
-          <p id="mainQuestions__block" className="main__title">Часто задаваемые вопросы</p>
+          <p id="mainQuestions__block" className="main__title original-text">Часто задаваемые вопросы
+          <span className="translated-text">Еш бирелэ торган сораулар</span>
+          </p>
           <Accordion />
 
       </section>
