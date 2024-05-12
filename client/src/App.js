@@ -7,8 +7,23 @@ import NavBar from "./components/NavBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
 import {check} from "./http/userAPI";
-
 const App = observer(() => {
+
+  // const {user} = useContext(Context)
+
+  // useEffect(() => {
+  //   const initUser = async () => {
+  //     try {
+  //       const user = await check(); // Проверка сессии и получение данных пользователя
+  //       if (user) user(user);
+  //     } catch (error) {
+  //       console.error("Failed to initialize user:", error);
+  //     }
+  //   };
+
+  //   initUser();
+  // }, [user]);
+
     // const {user} = useContext(Context)
     // const [loading, setLoading] = useState(true)
 

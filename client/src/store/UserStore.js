@@ -15,6 +15,10 @@ export default class UserStore {
     this._user = user
   }
 
+//   setUser(userData) {
+//   this._user = userData;
+// }
+
   get isAuth() {
     return this._isAuth
   }

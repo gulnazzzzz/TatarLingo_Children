@@ -13,21 +13,21 @@ import {Context} from "../index";
 
 const Auth = observer(() =>{
   
-  // useEffect(() => {
-  //   // Находим заголовки по классам
-  //   const SystemHeader = document.querySelector('.system-header');
-  //   const ChildHeader = document.querySelector('.child_header');
+  useEffect(() => {
+    // Находим заголовки по классам
+    const SystemHeader = document.querySelector('.system-header');
+    const ChildHeader = document.querySelector('.child_header');
 
-  //   // Скрываем оба заголовка
-  //   if (SystemHeader) SystemHeader.style.display = 'none';
-  //   if (ChildHeader) ChildHeader.style.display = 'none';
+    // Скрываем оба заголовка
+    if (SystemHeader) SystemHeader.style.display = 'none';
+    if (ChildHeader) ChildHeader.style.display = 'none';
 
-  //   // Возвращаем стиль к исходному при демонтировании компонента
-  //   return () => {
-  //     if (SystemHeader) SystemHeader.style.display = '';
-  //     if (ChildHeader) ChildHeader.style.display = '';
-  //   };
-  // }, []);
+    // Возвращаем стиль к исходному при демонтировании компонента
+    return () => {
+      if (SystemHeader) SystemHeader.style.display = '';
+      if (ChildHeader) ChildHeader.style.display = '';
+    };
+  }, []);
   
 
   const {user} = useContext(Context)
@@ -35,8 +35,11 @@ const Auth = observer(() =>{
   const history = useNavigate()
   const isLogin = location.pathname === LOGIN_ROUTE
   const [name, setName] = useState('')
+  const [birthday, setBirthday] = useState('')
+  const [photo, setPhoto] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
 
 
 //   const click = async () => {
@@ -111,7 +114,7 @@ const Auth = observer(() =>{
       }
        // Перенаправляем пользователя после успешного входа
     } else {
-      data = await registration(name, email, password);
+      data = await registration(name, birthday, photo, email, password);
       user.setUser(data); // предполагаем, что функции registration возвращает объект пользователя
       user.setIsAuth(true);
       alert(`Пользователь ${name} успешно зарегистрирован в системе.`);
@@ -137,11 +140,21 @@ const Auth = observer(() =>{
       <div className="container">
         <h2 className="regTitle">{isLogin ? 'Авторизация' : "Регистрация"}</h2>
         <form className="regForm" id="registration-form">
-          {!isLogin ? <input className="regInput" type="text" placeholder="Введите ваше имя..." value={name} onChange={e => setName(e.target.value)} /> : null}
+          {!isLogin ? 
+          <>
+          <input className="regInput" type="text" placeholder="Введите имя ребенка" value={name} onChange={e => setName(e.target.value)} /> 
+          <input className="regInput" type="date" placeholder="Введите возраст ребенка" value={birthday} onChange={e => setBirthday(e.target.value)} />
+          <input className="regInput" type="file" placeholder="фотография ребенка" value={photo} onChange={e => setPhoto(e.target.value)}
+          />
+          </>
+          : null}
           <input className="regInput" type="text" placeholder="Введите ваш email..." value={email} onChange={e => setEmail(e.target.value)} />
           <div className="passwordInput">
             <input className="regInput" placeholder="Введите ваш пароль..." value={password} onChange={e => setPassword (e.target.value)} type="password" />
             {/* <img src={openEye} alt="Показать пароль" className="showPassword" /> */}
+            {!isLogin ? 
+          <input className="regInput" type="text" placeholder="Повторите пароль" value={repeatPassword} onChange={e => setRepeatPassword(e.target.value)} />
+          : null}
           </div>
           <div className="regButtons">
             
