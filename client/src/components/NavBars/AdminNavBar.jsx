@@ -55,6 +55,13 @@ const AdminNavBar = observer(() => {
                 </nav>
               </div>
             </div>
+            {/* <NavLink to={ADMIN_ROUTE} className="child_name_link">
+              <div className="child_header_right_container_auth">
+                <div className="child_header_right">
+                  <NavLink to={ADMIN_ROUTE} className="original-text menu__link">Админ панель</NavLink>
+                </div>
+              </div>
+            </NavLink> */}
             <button onClick={() => navigate(ADMIN_ROUTE)} className="child_name_link">Админ панель</button>
             <button onClick={logOut} className="child_name_link">Выйти</button>
           </div>

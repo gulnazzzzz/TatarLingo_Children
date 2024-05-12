@@ -28,27 +28,6 @@ class UserController {
         return res.json({ token });
     }
   
-
-  // async registration(req, res, next) {
-  //   const {name, photo, email, password, role, birthday} = req.body
-  //   if (!name || !email || !password) {
-  //     return next(ApiError.badRequest('Некорректное имя, email или password'))
-  //   }
-  //   const candidate = await User.findOne({where: {email}})
-  //   if (candidate) {
-  //     return next(ApiError.badRequest('Пользователь с таким email уже существует'))
-  //   }
-  //   const hasPassword = await bcrypt.hash(password, 5)
-  //   const user = await User.create({name, photo, email, role, birthday, password: hasPassword})
-  //   // const basket = await Basket.create({userId: user.id})
-  //   const userAward = await UserAward.create({ userUserID: user.userID });
-  //   const token = generateJwt(user.userID, user.email, user.role)
-  //   // return res.json({ token });
-  // }
-
-
-
-
   async login(req, res , next) {
     const {email, password} = req.body
     const user = await User.findOne({where: {email}})

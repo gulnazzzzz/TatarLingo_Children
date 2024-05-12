@@ -67,12 +67,13 @@ const ChildNavBar = observer(() => {
               <div className="child_header_right_container">
                 <div className="child_header_right">
                   <img className="child_header_photo" src={childPhoto} alt="фото ребенка" />
-                  <p className="child_header_name">Алия</p>
+                  <p className="child_header_name">{user.name}</p>
                   <img className="child_header_arrow" src={rightArrow} alt="стрелка" />
                 </div>
               </div>
             </NavLink>
           </div>
+          <button onClick={logOut} className="child_name_link">Выйти</button>
         </header>
     </div>
   );

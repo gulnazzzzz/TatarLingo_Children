@@ -8,10 +8,10 @@ const CreateLesson = observer(({ show, onHide }) => {
     const [title, setTitle] = useState('');
     const [file, setFile] = useState(null);
 
-    useEffect(() => {
-        fetchAges().then(data => lesson.setAges(data));
-        fetchCategories().then(data => lesson.setCategories(data));
-    }, [lesson]);
+    // useEffect(() => {
+    //     fetchAges().then(data => lesson.setAges(data));
+    //     fetchCategories().then(data => lesson.setCategories(data));
+    // }, [lesson]);
 
     // const addInfo = () => {
     //     setInfo([...info, { title: '', description: '', number: Date.now() }]);
