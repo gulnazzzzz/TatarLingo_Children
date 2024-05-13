@@ -8,7 +8,7 @@ const AgeBar = observer(() => {
         <div className="ages">
           <h3>Возраст:</h3>
           <ul>
-            {lesson.lessonAges.map(lessonAge => (
+            {lesson.ages.map(lessonAge => (
               <li /* active={lessonAge.lessonAgeID === lesson.selectedAge.lessonAgeLessonAgeID} */
                   onClick={() => lesson.setSelectedAge(lessonAge)} key={lessonAge.lessonAgeID}>{lessonAge.name}</li>
             ))}

@@ -152,7 +152,25 @@ a {
   filter: drop-shadow(7px 7px 10px #A3A3A3);
   background-color: #F7F8FD;
   align-items: center;
+  transition: width 0.3s ease;
+}
 
+.child_header_name {
+  font-size: 14px;
+  filter: none;
+  /* базовый размер шрифта */
+}
+
+.long_name {
+  font-size: 12px;
+  
+  /* уменьшенный размер шрифта для длинных имен */
+}
+
+.child_header_right_long_container {
+    width: 200px;
+    padding: 12px;
+    align-items: center;
 }
 
 .child_header_right_container_auth {
@@ -963,4 +981,10 @@ button {
   border-top-color: #666;
   border-radius: 50%;
   animation: spinner 1s linear infinite;
+}
+
+.child_header_photo {
+  height: 59px;
+  width:59px;
+  border-radius: 50px;
 }

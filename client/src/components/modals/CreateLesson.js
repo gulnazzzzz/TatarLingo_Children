@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../../index';
-import { createLesson, fetchAges, fetchCategories } from '../../http/lessonAPI';
+import { createLesson, fetchAges, fetchCategories, fetchLessons } from '../../http/lessonAPI';
 
 const CreateLesson = observer(({ show, onHide }) => {
     const { lesson } = useContext(Context);
     const [title, setTitle] = useState('');
     const [file, setFile] = useState(null);
 
-    // useEffect(() => {
-    //     fetchAges().then(data => lesson.setAges(data));
-    //     fetchCategories().then(data => lesson.setCategories(data));
-    // }, [lesson]);
+    useEffect(() => {
+        fetchAges().then(data => lesson.setAges(data));
+        fetchCategories().then(data => lesson.setCategories(data));
+    }, [lesson]);
 
     // const addInfo = () => {
     //     setInfo([...info, { title: '', description: '', number: Date.now() }]);
@@ -24,7 +24,7 @@ const CreateLesson = observer(({ show, onHide }) => {
     // const changeInfo = (key, value, number) => {
     //     setInfo(info.map(i => i.number === number ? { ...i, [key]: value } : i));
     // };
-
+    
     const selectFile = e => {
         setFile(e.target.files[0]);
     };
@@ -53,7 +53,7 @@ const CreateLesson = observer(({ show, onHide }) => {
                     <div className="dropdown">
                         <button className="dropdown-toggle">{lesson.selectedAge.name || "Выберите возраст"}</button>
                         <div className="dropdown-menu">
-                            {lesson.lessonAges.map(lessonAge => (
+                            {lesson.ages.map(lessonAge => (
                                 <div key={lessonAge.lessonAgeID} onClick={() => lesson.setSelectedAge(lessonAge)}>
                                     {lessonAge.name}
                                 </div>
@@ -63,7 +63,7 @@ const CreateLesson = observer(({ show, onHide }) => {
                     <div className="dropdown">
                         <button className="dropdown-toggle">{lesson.selectedCategory.name || "Выберите категорию"}</button>
                         <div className="dropdown-menu">
-                            {lesson.lessonCategories.map(lessonCategory => (
+                            {lesson.categories.map(lessonCategory => (
                                 <div key={lessonCategory.lessonCategoryID} onClick={() => lesson.setSelectedCategory(lessonCategory)}>
                                     {lessonCategory.name}
                                 </div>

@@ -14,6 +14,7 @@ export default class UserStore {
   setUser(user) {
     this._user = user
   }
+  
 
 //   setUser(userData) {
 //   this._user = userData;

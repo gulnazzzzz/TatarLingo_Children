@@ -16,7 +16,7 @@ root.render(
     <Context.Provider value={
       {
         user: new UserStore(),
-        device: new LessonStore(),
+        lesson: new LessonStore(),
         material: new MaterialStore(),
         event: new EventStore(),
       }

@@ -10,7 +10,7 @@ import reports from '../../assets/reports.svg'
 import materials from '../../assets/materials.svg'
 import events from '../../assets/events.svg'
 import userImage from '../../assets/user.png'
-import { ADMIN_ROUTE, LESSONS_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE,  LOGIN_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE } from "../../utils/consts"
+import { ADMIN_ROUTE, LESSONS_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE,  LOGIN_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE, MAIN_ROUTE } from "../../utils/consts"
 
 
 const AdminNavBar = observer(() => {
@@ -18,9 +18,10 @@ const AdminNavBar = observer(() => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    user.setUser({});
-    user.setIsAuth(false);
-    navigate(LOGIN_ROUTE); // Переход на страницу логина после выхода
+    localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
+    user.setUser({});  // Обнуление данных пользователя
+    user.setIsAuth(false);  // Обновление состояния аутентификации
+    navigate(MAIN_ROUTE);
   }
 
   return (
@@ -55,13 +56,6 @@ const AdminNavBar = observer(() => {
                 </nav>
               </div>
             </div>
-            {/* <NavLink to={ADMIN_ROUTE} className="child_name_link">
-              <div className="child_header_right_container_auth">
-                <div className="child_header_right">
-                  <NavLink to={ADMIN_ROUTE} className="original-text menu__link">Админ панель</NavLink>
-                </div>
-              </div>
-            </NavLink> */}
             <button onClick={() => navigate(ADMIN_ROUTE)} className="child_name_link">Админ панель</button>
             <button onClick={logOut} className="child_name_link">Выйти</button>
           </div>

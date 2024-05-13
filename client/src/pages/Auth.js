@@ -8,6 +8,7 @@ import {LESSONS_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, ADMIN_ROUTE, EVENTS_ROUT
 import {login, registration} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import childPhoto from '../assets/girl.svg'
 
 // import exp from 'constants';
 
@@ -41,7 +42,7 @@ const Auth = observer(() =>{
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
 
-
+  
 //   const click = async () => {
 //   try {
 //     let data;
@@ -99,6 +100,9 @@ const Auth = observer(() =>{
 //     }
 //   }
 
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.files[0]);  // Передаем файл, а не значение
+}
 
   const click = async () => {
   try {
@@ -111,11 +115,14 @@ const Auth = observer(() =>{
         history(ADMIN_ROUTE); // Путь для администратора
       } else if (data.role === 'USER') {
         history(EVENTS_ROUTE); // Путь для обычных пользователей
+        
       }
        // Перенаправляем пользователя после успешного входа
     } else {
       data = await registration(name, birthday, photo, email, password);
-      user.setUser(data); // предполагаем, что функции registration возвращает объект пользователя
+      user.setUser(data);
+      
+       // предполагаем, что функции registration возвращает объект пользователя
       user.setIsAuth(true);
       alert(`Пользователь ${name} успешно зарегистрирован в системе.`);
       history(EVENTS_ROUTE); // Перенаправляем пользователя после успешной регистрации
@@ -131,6 +138,54 @@ const Auth = observer(() =>{
 };
 
 
+
+// const { user } = useContext(Context);
+//   const location = useLocation();
+//   const history = useNavigate();
+//   const isLogin = location.pathname === LOGIN_ROUTE;
+//   const [name, setName] = useState('');
+//   const [birthday, setBirthday] = useState('');
+//   const [photo, setPhoto] = useState(childPhoto);  // Инициализация стандартным фото
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [repeatPassword, setRepeatPassword] = useState('');
+
+//   const handlePhotoChange = (e) => {
+//     if (e.target.files && e.target.files[0]) {
+//       const reader = new FileReader();
+//       reader.onload = (ev) => {
+//         setPhoto(ev.target.result);  // Установка нового изображения
+//       };
+//       reader.readAsDataURL(e.target.files[0]);
+//     }
+//   };
+
+//   const click = async () => {
+//     try {
+//       let data;
+//       if (isLogin) {
+//         data = await login(email, password);
+//       } else {
+//         const userData = {
+//           name,
+//           birthday,
+//           photo,  // Используется текущее значение состояния
+//           email,
+//           password,
+//           role: 'USER'
+//         };
+//         data = await registration(userData);
+//       }
+//       user.setUser(data);
+//       user.setIsAuth(true);
+//       history(EVENTS_ROUTE);  // Перенаправляем пользователя после успешной регистрации/авторизации
+//     } catch (e) {
+//       console.error('Registration/Login Error:', e);
+//       alert('Ошибка при обработке запроса.');
+//     }
+//   };
+
+
   return (
     <div className="regPage">
       <div className="backgroundImage"></div>
@@ -142,10 +197,10 @@ const Auth = observer(() =>{
         <form className="regForm" id="registration-form">
           {!isLogin ? 
           <>
-          <input className="regInput" type="text" placeholder="Введите имя ребенка" value={name} onChange={e => setName(e.target.value)} /> 
-          <input className="regInput" type="date" placeholder="Введите возраст ребенка" value={birthday} onChange={e => setBirthday(e.target.value)} />
-          <input className="regInput" type="file" placeholder="фотография ребенка" value={photo} onChange={e => setPhoto(e.target.value)}
-          />
+          <input className="regInput" type="text" maxLength={15} placeholder="Введите имя ребенка" value={name} onChange={e => setName(e.target.value)} /> 
+          <input className="regInput" type="date"  placeholder="Введите возраст ребенка" value={birthday} onChange={e => setBirthday(e.target.value)} />
+          <input className="regInput" type="file" placeholder="Фотография ребенка" onChange={handlePhotoChange} />
+          
           </>
           : null}
           <input className="regInput" type="text" placeholder="Введите ваш email..." value={email} onChange={e => setEmail(e.target.value)} />
@@ -153,7 +208,7 @@ const Auth = observer(() =>{
             <input className="regInput" placeholder="Введите ваш пароль..." value={password} onChange={e => setPassword (e.target.value)} type="password" />
             {/* <img src={openEye} alt="Показать пароль" className="showPassword" /> */}
             {!isLogin ? 
-          <input className="regInput" type="text" placeholder="Повторите пароль" value={repeatPassword} onChange={e => setRepeatPassword(e.target.value)} />
+          <input className="regInput" type="password" placeholder="Повторите пароль" value={repeatPassword} onChange={e => setRepeatPassword(e.target.value)} />
           : null}
           </div>
           <div className="regButtons">

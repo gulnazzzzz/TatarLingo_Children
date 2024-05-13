@@ -3,15 +3,25 @@ import {jwtDecode as jwt_decode} from 'jwt-decode';
 
 
 export const registration = async (name, birthday, photo, email, password) => {
-    const {data} = await $host.post('api/user/registration', {name, birthday, photo, email, password, role: 'USER'});
+    let formData = new FormData();
+    formData.append('name', name);
+    formData.append('birthday', birthday);
+    formData.append('photo', photo);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('role', 'USER');  // Если роль всегда USER при регистрации
+
+    const {data} = await $host.post('api/user/registration', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
     localStorage.setItem('token', data.token);
     return jwt_decode(data.token);
-    // const response = await $host.post('api/user/registration', {name, email, password, role: 'ADMIN'})
-    // return response
-}
+};
 
 export const login = async (email, password) => {
-  try {
+    try {
         const {data} = await $host.post('api/user/login', {email, password});
         localStorage.setItem('token', data.token);
         return jwt_decode(data.token);  // This decodes the token and returns user data

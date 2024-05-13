@@ -1,23 +1,23 @@
 import {$authHost, $host} from "./index";
-// import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 export const createAge = async (lessonAge) => {
-    const {data} = await $authHost.post('api/lessonAge', lessonAge)
+    const {data} = await $authHost.post('api/age', lessonAge)
     return data
 }
 
 export const fetchAges = async () => {
-    const {data} = await $host.get('api/lessonAge')
+    const {data} = await $host.get('api/age')
     return data
 }
 
 export const createCategory = async (lessonCategory) => {
-    const {data} = await $authHost.post('api/lessonCategory', lessonCategory)
+    const {data} = await $authHost.post('api/category', lessonCategory)
     return data
 }
 
 export const fetchCategories = async () => {
-    const {data} = await $host.get('api/lessonCategory', )
+    const {data} = await $host.get('api/category', )
     return data
 }
 

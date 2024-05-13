@@ -10,9 +10,15 @@ const LessonList = observer(() => {
   const history = useNavigate()
   const {lesson} = useContext(Context)
 
+  if (!lesson || !lesson.lessons) {
+        return <div>Loading...</div>;  // Или другой индикатор загрузки
+    }
+    console.log(lesson.ages)
+    console.log(lesson.lessons)
+
     return (
     <div className="lessons">
-      {lesson.lessonCategories.map(lessonCategory => (
+      {lesson.categories.map(lessonCategory => (
         <div key={lessonCategory.lessonCategoryID} className="category-section">
           <h2>{lessonCategory.name}</h2>
           <div className="lessons-grid">

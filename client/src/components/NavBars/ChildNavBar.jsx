@@ -20,10 +20,17 @@ const ChildNavBar = observer(() => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    user.setUser({});
-    user.setIsAuth(false);
-    navigate('/login'); // Переход на страницу логина после выхода
+    localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
+    user.setUser({});  // Обнуление данных пользователя
+    user.setIsAuth(false);  // Обновление состояния аутентификации
+    navigate(MAIN_ROUTE);
   }
+  console.log(user.user.name); 
+  console.log(user.user); 
+  console.log(process.env.REACT_APP_API_URL)
+
+  const imageUrl = user.user.fileName ? `${process.env.REACT_APP_API_URL}static/children/${user.user.fileName}` : childPhoto;
+  const nameStyle = user.user.name.length > 9 ? "child_header_name long_name child_header_right_long_container" : "child_header_name";
 
   return (
     <div>
@@ -64,10 +71,12 @@ const ChildNavBar = observer(() => {
             </div>
             {/* <button onClick={logOut} className="child_name_link">Выйти</button> */}
             <NavLink to={PROFILE_ROUTE} className="child_name_link">
-              <div className="child_header_right_container">
+              <div className="child_header_right_container ">
                 <div className="child_header_right">
-                  <img className="child_header_photo" src={childPhoto} alt="фото ребенка" />
-                  <p className="child_header_name">{user.user.name}</p>
+                  {/* <img width={60} height={60}className="child_header_photo" src={user.user.fileName ? `http://localhost:5000/static/children/${user.user.fileName}` : childPhoto} alt="фото ребенка" /> */}
+                  <img width={50} height={50} className="child_header_photo" src={imageUrl} alt="Фото ребенка" />
+                  
+                  <p className={nameStyle}>{user.user.name}</p>
                   <img className="child_header_arrow" src={rightArrow} alt="стрелка" />
                 </div>
               </div>
