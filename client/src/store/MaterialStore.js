@@ -12,12 +12,9 @@ export default class MaterialStore {
             {materialID: 2, title: "Файл", img: `b67ed484-e5e7-45b8-b2af-5a13cd559dbf.docx`},
             {materialID: 3, title: "Файл не пустой", img: `b67ed484-e5e7-45b8-b2af-5a13cd559dbf.docx`},
         ]
-        // this._selectedAge = {
+        this._selectedMaterialCategory = {
 
-        // }
-        // this._selectedCategory = {
-
-        // }
+        }
         makeAutoObservable(this)
     }
 
@@ -28,20 +25,9 @@ export default class MaterialStore {
         this._materials = materials
     }
 
-    // setSelectedType(type) {
-    //     this.setPage(1)
-    //     this._selectedType = type
-    // }
-    // setSelectedBrand(brand) {
-    //     this.setPage(1)
-    //     this._selectedBrand = brand
-    // }
-    // setPage(page) {
-    //     this._page = page
-    // }
-    // setTotalCount(count) {
-    //     this._totalCount = count
-    // }
+    setSelectedMaterialCategory(materialCategory) {
+        this._selectedMaterialCategory = materialCategory
+    }
 
     get materialCategories() {
         return this._materialCategories
@@ -49,19 +35,7 @@ export default class MaterialStore {
     get materials() {
         return this._materials
     }
-    // get selectedType() {
-    //     return this._selectedType
-    // }
-    // get selectedBrand() {
-    //     return this._selectedBrand
-    // }
-    // get totalCount() {
-    //     return this._totalCount
-    // }
-    // get page() {
-    //     return this._page
-    // }
-    // get limit() {
-    //     return this._limit
-    // }
+    get selectedMaterialCategory() {
+        return this._selectedMaterialCategory
+    }
 }

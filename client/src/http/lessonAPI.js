@@ -33,7 +33,7 @@ export const fetchLessons = async (lessonAgeLessonAgeID, lessonCategoryLessonCat
     return data
 }
 
-export const fetchOneDevice = async (lessonID) => {
+export const fetchOneLesson = async (lessonID) => {
     const {data} = await $host.get('api/lesson/' + lessonID)
     return data
 }

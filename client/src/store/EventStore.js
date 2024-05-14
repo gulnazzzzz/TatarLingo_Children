@@ -10,12 +10,9 @@ export default class EventStore {
         this._events = [
             {eventID: 1, img: `https://unsplash.com/photos/yellow-flowers-on-brown-wooden-table-KGkudMJcKy4`, title: "Мульт концерт", description: "Тут описание мульт концерта", dateAndTime: "10 мая, 14:00", location: "Театр Камала", link: "https://kamalteatr.ru/about-the-theatre/repertoire/multkontsert-kontsert-solistov-orkestra-teatra-kamala/"},
         ]
-        // this._selectedAge = {
+        this._selectedEventCategory = {
 
-        // }
-        // this._selectedCategory = {
-
-        // }
+        }
         makeAutoObservable(this)
     }
 
@@ -26,20 +23,9 @@ export default class EventStore {
         this._events = events
     }
     
-    // setSelectedType(type) {
-    //     this.setPage(1)
-    //     this._selectedType = type
-    // }
-    // setSelectedBrand(brand) {
-    //     this.setPage(1)
-    //     this._selectedBrand = brand
-    // }
-    // setPage(page) {
-    //     this._page = page
-    // }
-    // setTotalCount(count) {
-    //     this._totalCount = count
-    // }
+    setSelectedEventCategory(eventCategory) {
+        this._selectedEventCategory = eventCategory
+    }
 
     get eventCategories() {
         return this._eventCategories
@@ -47,19 +33,8 @@ export default class EventStore {
     get events() {
         return this._events
     }
-    // get selectedType() {
-    //     return this._selectedType
-    // }
-    // get selectedBrand() {
-    //     return this._selectedBrand
-    // }
-    // get totalCount() {
-    //     return this._totalCount
-    // }
-    // get page() {
-    //     return this._page
-    // }
-    // get limit() {
-    //     return this._limit
-    // }
+    
+    get selectedEventCategory() {
+        return this._selectedEventCategory
+    }
 }
