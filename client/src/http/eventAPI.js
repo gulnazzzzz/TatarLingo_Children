@@ -16,10 +16,8 @@ export const createEvent = async (event) => {
     return data
 }
 
-export const fetchEvents = async (eventCategoryEventCategoryID) => {
-    const {data} = await $host.get('api/event', {params: {
-            eventCategoryEventCategoryID
-        }})
+export const fetchEvents = async (eventCategoryID) => {
+    const {data} = await $host.get('api/event',  eventCategoryID)
     return data
 }
 

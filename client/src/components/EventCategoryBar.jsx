@@ -6,7 +6,7 @@ const EventCategoryBar = observer(() => {
   const {event} = useContext(Context)
   return (
     <div className="event-category-bar">
-      {event.eventCategory.map((eventCategory, index) => (
+      {event.eventCategories.map((eventCategory, index) => (
         <button key={index} /* onClick={() => setSelectedBrand(eventCategory)} */ >
           {eventCategory.name}
         </button>

@@ -14,7 +14,7 @@ const Lessons = observer(() => {
         fetchAges().then(data => lesson.setAges(data))
         fetchCategories().then(data => lesson.setCategories(data))
         fetchLessons().then(data => {
-            lesson.setLessons(data.rows)
+            lesson.setLessons(data)
             // lesson.setTotalCount(data.count)
         })
     }, [])

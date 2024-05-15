@@ -12,18 +12,6 @@ const CreateLesson = observer(({ show, onHide }) => {
         fetchAges().then(data => lesson.setAges(data));
         fetchCategories().then(data => lesson.setCategories(data));
     }, [lesson]);
-
-    // const addInfo = () => {
-    //     setInfo([...info, { title: '', description: '', number: Date.now() }]);
-    // };
-
-    // const removeInfo = number => {
-    //     setInfo(info.filter(i => i.number !== number));
-    // };
-
-    // const changeInfo = (key, value, number) => {
-    //     setInfo(info.map(i => i.number === number ? { ...i, [key]: value } : i));
-    // };
     
     const selectFile = e => {
         setFile(e.target.files[0]);

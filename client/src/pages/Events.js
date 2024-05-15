@@ -1,45 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import EventCategoryBar from '../components/EventCategoryBar';
+import EventList from '../components/EventList';
 import '../index.css';
+import { observer } from "mobx-react-lite";
+import { Context } from "../index";
+import { fetchEventCategories, fetchEvents} from "../http/eventAPI";
 
-export default function Events() {
-  return (
-    <div>
-      {/* <EventCategoryBar></EventCategoryBar> */}
-      Мероприятия
-    </div>
-  );
-}
+const Events = observer(() => {
+    const { event } = useContext(Context);
+    
+    useEffect(() => {
+    fetchEventCategories().then(data => {
+        event.setEventCategories(data);
+    });
+    fetchEvents().then(data => {
+        event.setEvents(data);
+    });
+}, []);
 
+    useEffect(() => {
+    if (event.selectedEventCategory) {
+        fetchEvents(event.selectedEventCategory.eventCategoryID).then(data => {
+            event.setEvents(data);
+        });
+    }
+}, [event.selectedEventCategory]);
 
-// // Events.jsx
-// import React, { useState } from 'react';
-// import EventCategoryBar from './EventCategoryBar';
-// import './Events.css';
+    return (
+        <div className="events-container">
+            <div className="sidebar">
+                <EventCategoryBar />
+            </div>
+            <div className="main-content">
+                <EventList />
+            </div>
+        </div>
+    );
+});
 
-// const Events = ({ categories, events }) => {
-//   const [selectedCategory, setSelectedCategory] = useState(null);
-
-//   const handleSelectCategory = (category) => {
-//     setSelectedCategory(category);
-//   };
-
-//   return (
-//     <div className="events-page">
-//       <EventCategoryBar categories={categories} onSelectCategory={handleSelectCategory} />
-//       <div className="events-container">
-//         {events.filter(event => !selectedCategory || event.category === selectedCategory.id)
-//           .map((event, index) => (
-//             <div key={index} className="event-item">
-//               <h3>{event.title}</h3>
-//               <img src={event.image} alt={event.title} />
-//               <p>{event.description}</p>
-//             </div>
-//           ))
-//         }
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Events;
+export default Events;

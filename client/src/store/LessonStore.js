@@ -4,11 +4,7 @@ export default class LessonStore {
     constructor() {
         this._ages = []
         this._categories = []
-        this._lessons = [
-            {lessonID: 1, title: "Цифры 1, 2, 3", img: `https://unsplash.com/photos/a-large-building-with-a-clock-tower-in-the-middle-of-a-garden-dyMIyTQloTU`},
-            {lessonID: 2, title: "Эйдэ саныйбыз 1, 2, 3", img: `https://unsplash.com/photos/a-large-building-with-a-clock-tower-in-the-middle-of-a-garden-dyMIyTQloTU`},
-            {lessonID: 3, title: "Эйдэ санамыйбыз 1, 2, 3", img: `https://unsplash.com/photos/a-large-building-with-a-clock-tower-in-the-middle-of-a-garden-dyMIyTQloTU`},
-        ]
+        this._lessons = []
         this._selectedAge = {}
         this._selectedCategory = {}
         makeAutoObservable(this)
