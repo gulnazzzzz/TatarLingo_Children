@@ -4,7 +4,7 @@ import '../../../index.css';
 import FirstBlock from './components/FirstBlock'
 import SecondBlock from './components/SecondBlock'
 
-const Lesson1 = () => {
+const Lesson5 = () => {
   // Состояния для управления текущим блоком и счетчиками ответов
   const [currentBlock, setCurrentBlock] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -48,4 +48,4 @@ const Lesson1 = () => {
   );
 };
 
-export default Lesson1;
+export default Lesson5;

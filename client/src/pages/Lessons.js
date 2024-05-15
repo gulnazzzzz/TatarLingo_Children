@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import AgeBar from "../components/AgeBar";
 import LessonList from "../components/LessonList";
 import {observer} from "mobx-react-lite";
@@ -7,8 +7,11 @@ import {fetchAges, fetchCategories, fetchLessons} from "../http/lessonAPI";
 import '../index.css';
 import CategoryBar from '../components/CategoryBar';
 
+import { Link } from 'react-router-dom';
+
 const Lessons = observer(() => {
     const {lesson} = useContext(Context)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchAges().then(data => lesson.setAges(data))
@@ -18,6 +21,17 @@ const Lessons = observer(() => {
             // lesson.setTotalCount(data.count)
         })
     }, [])
+
+    useEffect(() => {
+        fetchLessons().then(data => {
+            lesson.setLessons(data);
+            setLoading(false);
+        });
+    }, [lesson]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     // useEffect(() => {
     //     fetchLessons(lesson.selectedType.id, lesson.selectedBrand.id).then(data => {
@@ -32,7 +46,7 @@ return (
                 <AgeBar></AgeBar>
                 <CategoryBar></CategoryBar>
             </div>
-            <LessonList></LessonList>
+            <LessonList lessons={lesson.lessons}></LessonList>
         </div>
     );
 })

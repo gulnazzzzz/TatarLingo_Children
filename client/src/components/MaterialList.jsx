@@ -8,7 +8,7 @@ const MaterialList = observer(() => {
     const { material } = useContext(Context);
 
     if (!material.materials || material.materials.length === 0) {
-        return <p>Загрузка событий...</p>;
+        return <p>Загрузка материалов...</p>;
     }
 
     return (

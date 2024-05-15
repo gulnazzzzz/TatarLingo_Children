@@ -4,7 +4,6 @@ import Auth from "./pages/Auth"
 import Awards from "./pages/Awards"
 import Event from "./pages/Event"
 import Events from "./pages/Events"
-import Lesson from "./pages/Lesson"
 import Lessons from "./pages/Lessons"
 import Main from "./pages/Main"
 import MainAwards from "./pages/MainAwards"
@@ -13,6 +12,8 @@ import MainMaterials from "./pages/MainMaterials"
 import MainReports from "./pages/MainReports"
 import Materials from "./pages/Materials"
 import Profile from "./pages/Profile"
+import LessonPage from './components/LessonPage';
+
 
 export const authRoutes = [
   {
@@ -20,12 +21,12 @@ export const authRoutes = [
     Component: Admin
   },
   {
-    path: LESSONS_ROUTE,
+    path: LESSONS_ROUTE /* + '/:lessonID' */,
     Component: Lessons
   },
   {
     path: LESSON_ROUTE + '/:lessonID',
-    Component: Lesson
+    Component: LessonPage
   },
   {
     path: AWARDS_ROUTE,
