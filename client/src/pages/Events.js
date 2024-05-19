@@ -28,12 +28,16 @@ const Events = observer(() => {
 
     return (
         <div className="events-container">
-            <div className="sidebar">
+            <p cla>Детские мероприятия: знакомство с татарской культурой в Казани</p>
+            <div>
+                <div className="sidebar">
                 <EventCategoryBar />
             </div>
             <div className="main-content">
                 <EventList />
             </div>
+            </div>
+            
         </div>
     );
 });
