@@ -1010,7 +1010,7 @@ button {
 .categoryButton:hover {
   background-color: #EDEDED;
   box-shadow: rgba(193, 193, 193, 1.2) 0px 5px 20px;
-  transform: translateY(-10px);
+  transform: translateY(-6px);
 }
 
 .cards {
@@ -1314,4 +1314,37 @@ button {
     .event-image {
       height: 180px;
     }
+}
+
+
+
+
+.material-card {
+  cursor: pointer;
+  height: 150px;
+  border-radius: 20px;
+  width: 300px;
+  border: 1px solid #000000;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  /* Центрирование по горизонтали */
+  align-items: center;
+  /* Центрирование по вертикали */
+}
+
+.material-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.materials-card {
+  cursor: pointer;
+  width: 300px;
+  margin-bottom: 35px;
+}
+
+.material-card-link {
+  text-decoration: none;
+  display: block;
 }

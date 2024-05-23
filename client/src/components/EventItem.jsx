@@ -23,8 +23,6 @@ const EventItem = ({ event }) => {
                     <p className='marginNull'>{event.location}</p>
                 </div>
                 </div>
-                
-                
             </div>
         </div>
     );

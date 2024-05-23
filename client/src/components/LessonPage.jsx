@@ -11,7 +11,7 @@ const LessonPage = () => {
                 setLessonContent(lazy(() => import(`../pages/lessons/${lessonID}/Lesson${lessonID}`)));
             })
             .catch(error => {
-                console.error('Lesson not found', error);
+                console.error('Урок не найден', error);
                 // Handle error
             });
     }, [lessonID]);
@@ -19,8 +19,8 @@ const LessonPage = () => {
     return (
         <div>
             <h1>Lesson {lessonID}</h1>
-            <Suspense fallback={<div>Loading...</div>}>
-                {LessonContent ? <LessonContent /> : <p>Lesson not found.</p>}
+            <Suspense fallback={<div>Загрузка...</div>}>
+                {LessonContent ? <LessonContent /> : <p>Урок не найден.</p>}
             </Suspense>
         </div>
     );

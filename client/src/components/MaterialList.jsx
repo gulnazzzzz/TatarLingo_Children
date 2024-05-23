@@ -7,18 +7,17 @@ import '../index.css';
 const MaterialList = observer(() => {
     const { material } = useContext(Context);
 
-    if (!material.materials || material.materials.length === 0) {
-        return <p>Загрузка материалов...</p>;
+    if (!material.filteredMaterials || material.filteredMaterials.length === 0) {
+        return <p>Нет материалов для отображения</p>;
     }
 
     return (
-        <div className="event-list">
-            {material.materials.map(material => (
-                <MaterialItem key={material.materialID} material={material} />
+        <div className="cards">
+            {material.filteredMaterials.slice().reverse().map(material => (
+                <MaterialItem className="card" key={material.materialID} material={material} />
             ))}
         </div>
     );
 });
 
 export default MaterialList;
-
