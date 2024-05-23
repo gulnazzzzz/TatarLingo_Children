@@ -27,18 +27,21 @@ const Events = observer(() => {
 }, [event.selectedEventCategory]);
 
     return (
-        <div className="events-container">
-            <p cla>Детские мероприятия: знакомство с татарской культурой в Казани</p>
-            <div>
-                <div className="sidebar">
-                <EventCategoryBar />
+        <div className="many-container">
+            <div className="radius-container">
+                <div className='radius-container-content'>
+                    <p className='page-title'>Детские мероприятия: знакомство с татарской культурой в Казани</p>
+                    <div>
+                        <div className="category">
+                            <EventCategoryBar />
+                        </div>
+                        <div className="cards">
+                            <EventList />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="main-content">
-                <EventList />
-            </div>
-            </div>
-            
-        </div>
+        </div>  
     );
 });
 

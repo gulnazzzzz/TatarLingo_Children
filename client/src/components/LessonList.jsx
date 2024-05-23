@@ -14,10 +14,9 @@ const LessonList = ({ lessons }) => {
 
 
   if (!lesson || !lesson.lessons) {
-        return <div>Loading...</div>;  // Или другой индикатор загрузки
+        return <div>Загрузка уроков...</div>;  // Или другой индикатор загрузки
     }
-    console.log(lesson)
-    console.log(lesson.lessons)
+
 
     return (
     <div className="lessons">

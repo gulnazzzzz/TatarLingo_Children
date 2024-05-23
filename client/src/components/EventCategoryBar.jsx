@@ -5,9 +5,9 @@ import {Context} from "../index";
 const EventCategoryBar = observer(() => {
   const {event} = useContext(Context)
   return (
-    <div className="event-category-bar">
+    <div className="category">
       {event.eventCategories.map((eventCategory, index) => (
-        <button key={index} /* onClick={() => setSelectedBrand(eventCategory)} */ >
+        <button className="categoryButton" key={index} /* onClick={() => setSelectedEvent(eventCategory)} */ >
           {eventCategory.name}
         </button>
       ))}

@@ -27,14 +27,22 @@ const Materials = observer(() => {
 }, [material.selectedMaterialCategory]);
 
     return (
-        <div className="events-container">
-            <div className="sidebar">
-                <MaterialCategoryBar />
+        <div className="many-container">
+            <div className="radius-container">
+                <div className='radius-container-content'>
+                    <p className='page-title'>Образовательные материалы для дополнительного изучения языка</p>
+                    <div>
+                        <div className="category">
+                            <MaterialCategoryBar />
+                        </div>
+                        <div className="cards main-content">
+                            <MaterialList />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="main-content">
-                <MaterialList />
-            </div>
-        </div>
+        </div> 
+        
     );
 });
 

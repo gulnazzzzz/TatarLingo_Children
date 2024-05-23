@@ -12,9 +12,9 @@ const EventList = observer(() => {
     }
 
     return (
-        <div className="event-list">
-            {event.events.map(event => (
-                <EventItem key={event.eventID} event={event} />
+        <div className="cards">
+            {event.events.slice().reverse().map(event => (
+                <EventItem className="card" key={event.eventID} event={event} />
             ))}
         </div>
     );

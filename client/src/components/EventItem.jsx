@@ -10,14 +10,21 @@ const EventItem = ({ event }) => {
     const imageUrl = `${process.env.REACT_APP_API_URL}static/${event.img}`
 
     return (
-        <div className="device-item" onClick={() => history(EVENT_ROUTE + '/' + event.eventID)}>
-            <div className="device-card">
-                <img width={240} height={160} className="device-image" src={imageUrl} alt={event.name} />
-                <p>{event.title}</p>
-                <p>{event.description}</p>
-                <p>{event.dateAndTime}</p>
-                <p>{event.location}</p>
-                <p>{event.link}</p>
+        <div className="event-item" onClick={() => history(EVENT_ROUTE + '/' + event.eventID)}>
+            <div className="event-card">
+                <img className="event-image" src={imageUrl} alt={event.name} />
+                <div className='underImg_event'>
+                    <p className="event-title">{event.title}</p>
+                <div className="dateLocation">
+                    <p className='marginNull'>{event.dateAndTime}</p>
+                    <div className='betweenDateLocation'>
+                    </div>
+                    
+                    <p className='marginNull'>{event.location}</p>
+                </div>
+                </div>
+                
+                
             </div>
         </div>
     );
