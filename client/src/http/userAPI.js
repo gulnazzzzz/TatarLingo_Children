@@ -9,7 +9,7 @@ export const registration = async (name, birthday, photo, email, password) => {
     formData.append('photo', photo);
     formData.append('email', email);
     formData.append('password', password);
-    formData.append('role', 'USER');  // Если роль всегда USER при регистрации
+    formData.append('role', 'USER');  
 
     const {data} = await $host.post('api/user/registration', formData, {
         headers: {
@@ -24,25 +24,30 @@ export const login = async (email, password) => {
     try {
         const {data} = await $host.post('api/user/login', {email, password});
         localStorage.setItem('token', data.token);
-        return jwt_decode(data.token);  // This decodes the token and returns user data
+        return jwt_decode(data.token);  
     } catch (error) {
         console.error("Login error:", error);
         throw error;
     }
 };
-    // const {data} = await $host.post('api/user/login', {email, password})
-    // localStorage.setItem('token', data.token)
-    // return jwt_decode(data.token)
-
-
-    // const response = await $host.post('api/user/login', {email, password})
-    // return response
-// }
 
 export const check = async () => {
     const {data} = await $authHost.get('api/user/auth' )
     localStorage.setItem('token', data.token)
     return jwt_decode(data.token)
-    // const response = await $authHost.get('api/user/auth' )
-    // return response
 }
+
+export const updateProfile = async (userID, updatedUser) => {
+    try {
+        const token = localStorage.getItem('token'); // Получаем токен из localStorage
+        const { data } = await $authHost.put(`api/user/${userID}`, updatedUser, {
+            headers: {
+                Authorization: `Bearer ${token}` // Добавляем заголовок авторизации
+            }
+        });
+        return data;
+    } catch (error) {
+        console.error("Update profile error:", error);
+        throw error;
+    }
+};

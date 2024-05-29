@@ -19,12 +19,12 @@ const ChildNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
 
-  const logOut = () => {
-    localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
-    user.setUser({});  // Обнуление данных пользователя
-    user.setIsAuth(false);  // Обновление состояния аутентификации
-    navigate(MAIN_ROUTE);
-  }
+  // const logOut = () => {
+  //   localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
+  //   user.setUser({});  // Обнуление данных пользователя
+  //   user.setIsAuth(false);  // Обновление состояния аутентификации
+  //   navigate(MAIN_ROUTE);
+  // }
   console.log(user.user.name); 
   console.log(user.user); 
   console.log(process.env.REACT_APP_API_URL)
@@ -73,7 +73,6 @@ const ChildNavBar = observer(() => {
             <NavLink to={PROFILE_ROUTE} className="child_name_link">
               <div className="child_header_right_container ">
                 <div className="child_header_right">
-                  {/* <img width={60} height={60}className="child_header_photo" src={user.user.fileName ? `http://localhost:5000/static/children/${user.user.fileName}` : childPhoto} alt="фото ребенка" /> */}
                   <img width={50} height={50} className="child_header_photo" src={imageUrl} alt="Фото ребенка" />
                   
                   <p className={nameStyle}>{user.user.name}</p>
@@ -82,7 +81,7 @@ const ChildNavBar = observer(() => {
               </div>
             </NavLink>
           </div>
-          <button onClick={logOut} className="child_name_link">Выйти</button>
+          {/* <button onClick={logOut} className="child_name_link">Выйти</button> */}
         </header>
     </div>
   );

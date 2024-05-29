@@ -1110,6 +1110,16 @@ button {
   .categoryButton:hover {
     transform: translateY(-3px);
   }
+    .adminButton {
+      padding: 0 16px;
+      /* Уменьшаем padding для кнопок */
+      font-size: 12px;
+      height: 34px;
+    }
+  
+    .adminButton:hover {
+      transform: translateY(-1px);
+    }
 
     .cards {
       gap: 18px;
@@ -1176,6 +1186,11 @@ button {
     font-size: 10px;
     height: 30px;
   }
+    .adminButton {
+      padding: 0px 12px;
+      font-size: 10px;
+      height: 30px;
+    }
 
   
   
@@ -1347,4 +1362,44 @@ button {
 .material-card-link {
   text-decoration: none;
   display: block;
+}
+
+
+
+
+
+
+.profileContent {
+  display: flex;
+  width: 1000px;
+}
+
+
+.adminButtons {
+  display: flex;
+}
+
+.adminButton {
+  background-color: #fff;
+  vertical-align: center;
+  align-items: center;
+  padding: 0 20px;
+  /* Упрощаем паддинги для кнопок */
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  /* Центрируем текст */
+  height: 44px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: rgba(193, 193, 193, 0.4) 0px 5px 20px;
+  transition: transform 0.3s;
+  margin: 4px;
+}
+
+.adminButton:hover {
+  background-color: #EDEDED;
+  box-shadow: rgba(193, 193, 193, 1.2) 0px 5px 20px;
+  transform: translateY(-1px);
 }

@@ -4,7 +4,7 @@ import word from '../assets/word.svg';
 import point from '../assets/point.svg';
 
 const MaterialItem = ({ material }) => {
-    const materialUrl = `${process.env.REACT_APP_API_URL}static/${material.file}`;
+    const materialUrl = `${process.env.REACT_APP_API_URL}static/materials/${material.file}`;
     const fileExtension = material.file.split('.').pop(); // Получаем расширение файла
 
     let imageSrc;

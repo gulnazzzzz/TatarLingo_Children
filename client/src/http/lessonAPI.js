@@ -26,6 +26,11 @@ export const createLesson = async (lesson) => {
     return data
 }
 
+// export const createLesson = async (formData) => {
+//     const response = await $authHost.post('http://localhost:5000/api/lesson', formData);
+//     return response.data;
+// };
+
 export const fetchLessons = async (lessonAgeLessonAgeID, lessonCategoryLessonCategoryID) => {
     const {data} = await $host.get('api/lesson', {params: {
             lessonAgeLessonAgeID, lessonCategoryLessonCategoryID
@@ -37,3 +42,9 @@ export const fetchOneLesson = async (lessonID) => {
     const {data} = await $host.get('api/lesson/' + lessonID)
     return data
 }
+
+
+export const deleteLesson = async (lessonID) => {
+    const { data } = await $authHost.delete(`api/lesson/${lessonID}`);
+    return data;
+};

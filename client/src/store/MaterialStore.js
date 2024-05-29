@@ -24,7 +24,7 @@ export default class MaterialStore {
     }
 
     filterMaterials() {
-        if (!this._selectedMaterialCategory.materialCategoryID) {
+        if (!this._selectedMaterialCategory || !this._selectedMaterialCategory.materialCategoryID) {
             this._filteredMaterials = this._materials;
         } else {
             this._filteredMaterials = this._materials.filter(material => material.materialCategoryMaterialCategoryID === this._selectedMaterialCategory.materialCategoryID);

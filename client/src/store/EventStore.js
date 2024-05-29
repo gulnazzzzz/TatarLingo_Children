@@ -57,12 +57,12 @@ export default class EventStore {
     }
 
     filterEvents() {
-        if (!this._selectedEventCategory.eventCategoryID) {
-            this._filteredEvents = this._events;
-        } else {
-            this._filteredEvents = this._events.filter(event => event.eventCategoryEventCategoryID === this._selectedEventCategory.eventCategoryID);
-        }
+    if (!this._selectedEventCategory || !this._selectedEventCategory.eventCategoryID) {
+        this._filteredEvents = this._events;
+    } else {
+        this._filteredEvents = this._events.filter(event => event.eventCategoryEventCategoryID === this._selectedEventCategory.eventCategoryID);
     }
+}
 
     get eventCategories() {
         return this._eventCategories;

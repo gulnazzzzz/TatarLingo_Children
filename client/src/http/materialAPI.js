@@ -23,7 +23,28 @@ export const fetchMaterials = async (materialCategoryMaterialCategoryID) => {
     return data
 }
 
-// export const fetchOneDevice = async (id) => {
-//     const {data} = await $host.get('api/device/' + id)
-//     return data
-// }
+
+export const fetchOneMaterial = async (materialID) => {
+    const { data } = await $host.get('api/material/' + materialID);
+    return data;
+};
+
+// export const updateMaterial = async (materialID, material) => {
+//     const { data } = await $authHost.put('api/material/' + materialID, material);
+//     return data;
+// };
+
+export const updateMaterial = async (materialID, material) => {
+    if (!materialID) {
+        console.error("Material ID is missing or invalid.");
+        return; // Прерываем выполнение функции, если materialID не задан или пуст
+    }
+
+    const { data } = await $authHost.put('api/material/' + materialID, material);
+    return data;
+};
+
+export const deleteMaterial = async (materialID) => {
+    const { data } = await $authHost.delete(`api/material/${materialID}`);
+    return data;
+};
