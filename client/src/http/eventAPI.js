@@ -51,3 +51,8 @@ export const deleteEvent = async (eventID) => {
     const { data } = await $authHost.delete(`api/event/${eventID}`);
     return data;
 };
+
+export const updateEventCategory = async (eventCategoryID, updatedCategory) => {
+    const { data } = await $authHost.put(`api/eventCategory/${eventCategoryID}`, updatedCategory);
+    return data;
+};

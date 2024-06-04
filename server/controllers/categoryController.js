@@ -11,6 +11,24 @@ class CategoryController {
     const lessonCategories = await LessonCategory.findAll()
     return res.json(lessonCategories)
   }
+  async update(req, res, next) {
+    try {
+      const { categoryID } = req.params;
+      const { name } = req.body;
+
+      const lessonCategory = await LessonCategory.findOne({ where: { lessonCategoryID: categoryID } });
+      if (!lessonCategory) {
+        return next(ApiError.notFound('Lesson Category not found'));
+      }
+
+      lessonCategory.name = name;
+      await lessonCategory.save();
+
+      return res.json(lessonCategory);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
+  }
 }
 
 module.exports = new CategoryController()

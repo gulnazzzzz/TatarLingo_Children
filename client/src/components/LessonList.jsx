@@ -1,44 +1,42 @@
-import React, {useContext} from 'react';
-import {observer} from "mobx-react-lite";
-import {useNavigate} from "react-router-dom"
-import {Context} from "../index";
-// import {LESSON_ROUTE} from "../utils/consts";
+import React, { useContext } from 'react';
+import { observer } from "mobx-react-lite";
+import { Link } from 'react-router-dom';
+import { Context } from "../index";
 import '../index.css';
 
-import { Link } from 'react-router-dom';
 
+const LessonList = observer(() => {
+  const { lesson } = useContext(Context);
 
-const LessonList = ({ lessons }) => {
-  const history = useNavigate()
-  const {lesson} = useContext(Context)
+  if (!lesson || !lesson.filteredLessons) {
+    return <div>Загрузка уроков...</div>;  // Или другой индикатор загрузки
+  }
 
+  // Группировка отфильтрованных уроков по категориям
+  const categoriesWithLessons = lesson.categories.filter(category =>
+    lesson.filteredLessons.some(lesson => lesson.lessonCategoryLessonCategoryID === category.lessonCategoryID)
+  );
 
-  if (!lesson || !lesson.lessons) {
-        return <div>Загрузка уроков...</div>;  // Или другой индикатор загрузки
-    }
-
-
-    return (
+  return (
     <div className="lessons">
-      {lesson.categories.map(lessonCategory => (
+      {lesson.selectedAge && lesson.selectedAge.name && (
+        <h1>{lesson.selectedAge.name}</h1>
+      )}
+      {categoriesWithLessons.map(lessonCategory => (
         <div key={lessonCategory.lessonCategoryID} className="category-section">
           <h2>{lessonCategory.name}</h2>
           <div className="lessons-grid">
-            {lesson.lessons.filter(lesson => lesson.lessonCategoryLessonCategoryID === lessonCategory.lessonCategoryID).map(lesson => (
+            {lesson.filteredLessons.filter(lesson => lesson.lessonCategoryLessonCategoryID === lessonCategory.lessonCategoryID).map(lesson => (
               <Link key={lesson.lessonID} to={`/lesson/${lesson.lessonID}`}>
-                <img width={50} height={50} src={process.env.REACT_APP_API_URL + `static/` + lesson.img}  alt={lesson.title} />
+                <img width={50} height={50} src={process.env.REACT_APP_API_URL + `static/` + lesson.img} alt={lesson.title} />
                 <p>{lesson.title}</p>
-            </Link>
-            //   <div onClick={() => history(LESSON_ROUTE + '/' + lesson.lessonID)} key={lesson.lessonID} className="lesson-block">
-            //     <img width={150} height={150} src={process.env.REACT_APP_API_URL + lesson.img}  alt={lesson.title} />
-            //     <p>{lesson.title}</p>
-            // </div>
+              </Link>
             ))}
           </div>
         </div>
       ))}
     </div>
   );
-};
+});
 
 export default LessonList;

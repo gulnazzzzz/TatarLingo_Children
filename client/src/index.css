@@ -1403,3 +1403,8 @@ button {
   box-shadow: rgba(193, 193, 193, 1.2) 0px 5px 20px;
   transform: translateY(-1px);
 }
+
+.categories .selected {
+  color: red;
+  /* Дополнительные стили для выделения */
+}

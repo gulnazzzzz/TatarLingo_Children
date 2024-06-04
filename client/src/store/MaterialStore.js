@@ -5,7 +5,7 @@ export default class MaterialStore {
         this._materialCategories = [];
         this._materials = [];
         this._selectedMaterialCategory = {};
-        this._filteredMaterials = []; // Добавить новое свойство
+        this._filteredMaterials = [];
         makeAutoObservable(this);
     }
 
@@ -15,12 +15,12 @@ export default class MaterialStore {
 
     setMaterials(materials) {
         this._materials = materials;
-        this.filterMaterials(); // Вызов метода фильтрации после обновления материалов
+        this.filterMaterials();
     }
 
     setSelectedMaterialCategory(materialCategory) {
         this._selectedMaterialCategory = materialCategory;
-        this.filterMaterials(); // Вызов метода фильтрации при выборе категории
+        this.filterMaterials();
     }
 
     filterMaterials() {

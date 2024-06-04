@@ -62,7 +62,7 @@ const CreateEvent = observer(({ show, onHide }) => {
                         onChange={e => setTitle(e.target.value)}
                         placeholder="Введите название мероприятия"
                     />
-                    <input
+                    <textarea
                         type="text"
                         value={description}
                         onChange={e => setDescription(e.target.value)}

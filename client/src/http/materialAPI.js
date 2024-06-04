@@ -48,3 +48,8 @@ export const deleteMaterial = async (materialID) => {
     const { data } = await $authHost.delete(`api/material/${materialID}`);
     return data;
 };
+
+export const updateMaterialCategory = async (materialCategoryID, updatedCategory) => {
+  const { data } = await $authHost.put(`api/materialCategory/${materialCategoryID}`, updatedCategory);
+  return data;
+};

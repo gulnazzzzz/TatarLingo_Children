@@ -1,18 +1,25 @@
-import React, {useContext} from 'react';
-import {observer} from "mobx-react-lite";
-import {Context} from "../index";
+import React, { useContext } from 'react';
+import { observer } from "mobx-react-lite";
+import { Context } from "../index";
 
 const AgeBar = observer(() => {
-    const {lesson} = useContext(Context)
+    const { lesson } = useContext(Context);
+
+    const handleShowAllAges = () => {
+        lesson.setSelectedAge({});
+    };
+
     return (
         <div className="ages">
-          <h3>Возраст:</h3>
-          <ul>
-            {lesson.ages.map(lessonAge => (
-              <li /* active={lessonAge.lessonAgeID === lesson.selectedAge.lessonAgeLessonAgeID} */
-                  onClick={() => lesson.setSelectedAge(lessonAge)} key={lessonAge.lessonAgeID}>{lessonAge.name}</li>
-            ))}
-          </ul>
+            <h3>Возраст:</h3>
+            <button onClick={handleShowAllAges}>Все возрасты</button>
+            <ul>
+                {lesson.ages.map(lessonAge => (
+                    <li key={lessonAge.lessonAgeID} onClick={() => lesson.setSelectedAge(lessonAge)}>
+                        {lessonAge.name}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 });

@@ -48,3 +48,13 @@ export const deleteLesson = async (lessonID) => {
     const { data } = await $authHost.delete(`api/lesson/${lessonID}`);
     return data;
 };
+
+export const updateAge = async (ageID, updatedAge) => {
+    const { data } = await $authHost.put(`api/age/${ageID}`, updatedAge);
+    return data;
+};
+
+export const updateCategory = async (categoryID, updatedCategory) => {
+  const { data } = await $authHost.put(`api/category/${categoryID}`, updatedCategory);
+  return data;
+};
