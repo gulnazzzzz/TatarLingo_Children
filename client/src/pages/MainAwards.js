@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import '../index.css';
+import MainAward from '../assets/MainAwards.svg';
 
 export default function MainAwards() {
   return (
     <div>
-      MainAwards
+      <img className="mainPic" src={MainAward} />
     </div>
   );
 }

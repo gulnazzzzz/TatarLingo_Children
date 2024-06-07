@@ -21,14 +21,19 @@ const UpdateProfile = observer(({ show, onHide, profileData, setProfileData }) =
         formData.append('birthday', profileData.birthday);
 
         try {
-            const userId = user.user.userID; // Предположим, что userID доступен в user.user
-            await axios.put(`${process.env.REACT_APP_API_URL}api/user/${userId}`, formData);
+            const userId = user.user.userID; // Предполагаем, что userID доступен в user.user
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}api/user/${userId}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             onHide(); // Close the modal after successful update
-            // Update user data after successful profile update
+            const updatedUser = response.data.user;
             user.setUser({
-              ...user.user,
-              name: profileData.name,
-              birthday: profileData.birthday,
+                ...user.user,
+                name: updatedUser.name,
+                birthday: updatedUser.birthday,
+                photo: updatedUser.photo, // Обновление фото в пользовательских данных
             });
         } catch (error) {
             console.error('Failed to update profile:', error);
@@ -45,14 +50,12 @@ const UpdateProfile = observer(({ show, onHide, profileData, setProfileData }) =
                     <button type="button" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
-                    <input
-                        type="file"
-                        onChange={selectFile}
-                    />
+                    <input type="file" onChange={selectFile} />
                     <input
                         type="text"
                         name="name"
                         value={profileData.name}
+                        maxLength="15"
                         onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
                         placeholder="Введите имя"
                     />

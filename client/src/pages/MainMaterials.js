@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import '../index.css';
+import MainMaterial from '../assets/MainMaterials.svg';
 
 export default function MainMaterials() {
   return (
     <div>
-      MainMaterials
+      <img className="mainPic" src={MainMaterial} />
     </div>
   );
 }

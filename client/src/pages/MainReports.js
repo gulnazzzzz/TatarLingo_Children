@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import '../index.css';
+import MainReport from '../assets/MainReports.svg';
 
 export default function MainReports() {
   return (
     <div>
-      Информация об отчетах
+      <img className="mainPic" src={MainReport} />
     </div>
   );
 }

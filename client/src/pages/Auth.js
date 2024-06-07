@@ -4,11 +4,12 @@ import '../index.css';
 import auth_logo from '../assets/auth_logo.svg';
 import openEye from '../assets/openEye.svg';
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
-import {LESSONS_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, ADMIN_ROUTE, EVENTS_ROUTE} from "../utils/consts";
+import {MAIN_ROUTE, LESSONS_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, ADMIN_ROUTE, EVENTS_ROUTE} from "../utils/consts";
 import {login, registration} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import childPhoto from '../assets/girl.svg'
+import lessonBack from '../assets/lessonBack.jpg';
 
 // import exp from 'constants';
 
@@ -42,63 +43,6 @@ const Auth = observer(() =>{
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
 
-  
-//   const click = async () => {
-//   try {
-//     let data;
-//     if (isLogin) {
-//       data = await login(email, password);
-//     } else {
-//       data = await registration(name, email, password);
-//     }
-
-//     user.setUser(data); // предполагаем, что userData содержит всю нужную информацию о пользователе
-//     user.setIsAuth(true);
-
-//     // Проверяем роль и перенаправляем пользователя
-//     switch (data.role) {
-//       case 'ADMIN':
-//         history('/admin'); // Путь для администратора
-//         break;
-//       default:
-//         history(LESSONS_ROUTE); // Общий путь или страница по умолчанию
-//         break;
-//     }
-//   } catch (e) {
-//     if (e.response && e.response.data && e.response.data.message) {
-//       alert(e.response.data.message);
-//     } else {
-//       // Если ошибка не в стандартном формате, выводим общее сообщение
-//       alert('Произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте снова.');
-//     }
-//   }
-// };
-
-
-//   const click = async () => {
-//     try {
-//       let data;
-//       if (isLogin) {
-//   data = await login(email, password);
-// } else {
-//   data = await registration(name, email, password);
-// }
-// user.setUser(data); // предполагаем, что функции login и registration возвращают объект пользователя
-// user.setIsAuth(true);
-//       history(ADMIN_ROUTE)
-//     } /* catch (e) {
-//       alert(e.response.data.message)
-//     } */
-//     catch (e) {
-//       if (e.response && e.response.data && e.response.data.message) {
-//       alert(e.response.data.message);
-//     } else {
-//       // Если в объекте ошибки нет ожидаемой структуры, выводим общее сообщение об ошибке
-//       console.error('Error:', e);
-//       alert('Произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте снова.');
-//     }
-//     }
-//   }
 
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);  // Передаем файл, а не значение
@@ -114,7 +58,7 @@ const Auth = observer(() =>{
       if (data.role === 'ADMIN') {
         history(ADMIN_ROUTE); // Путь для администратора
       } else if (data.role === 'USER') {
-        history(EVENTS_ROUTE); // Путь для обычных пользователей
+        history(LESSONS_ROUTE); // Путь для обычных пользователей
         
       }
        // Перенаправляем пользователя после успешного входа
@@ -137,64 +81,24 @@ const Auth = observer(() =>{
   }
 };
 
-
-
-// const { user } = useContext(Context);
-//   const location = useLocation();
-//   const history = useNavigate();
-//   const isLogin = location.pathname === LOGIN_ROUTE;
-//   const [name, setName] = useState('');
-//   const [birthday, setBirthday] = useState('');
-//   const [photo, setPhoto] = useState(childPhoto);  // Инициализация стандартным фото
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [repeatPassword, setRepeatPassword] = useState('');
-
-//   const handlePhotoChange = (e) => {
-//     if (e.target.files && e.target.files[0]) {
-//       const reader = new FileReader();
-//       reader.onload = (ev) => {
-//         setPhoto(ev.target.result);  // Установка нового изображения
-//       };
-//       reader.readAsDataURL(e.target.files[0]);
-//     }
-//   };
-
-//   const click = async () => {
-//     try {
-//       let data;
-//       if (isLogin) {
-//         data = await login(email, password);
-//       } else {
-//         const userData = {
-//           name,
-//           birthday,
-//           photo,  // Используется текущее значение состояния
-//           email,
-//           password,
-//           role: 'USER'
-//         };
-//         data = await registration(userData);
-//       }
-//       user.setUser(data);
-//       user.setIsAuth(true);
-//       history(EVENTS_ROUTE);  // Перенаправляем пользователя после успешной регистрации/авторизации
-//     } catch (e) {
-//       console.error('Registration/Login Error:', e);
-//       alert('Ошибка при обработке запроса.');
-//     }
-//   };
-
+      const backgroundStyle = {
+        backgroundImage: `url(${lessonBack})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100%',
+    };
 
   return (
-    <div className="regPage">
-      <div className="backgroundImage"></div>
+    <div style={backgroundStyle} className="regPage">
       <div className="regLogoBlock">
+        <NavLink to={MAIN_ROUTE}>
         <img src={auth_logo} alt="Логотип" className="regLogo" />
+        </NavLink>
       </div>
       <div className="container">
-        <h2 className="regTitle">{isLogin ? 'Авторизация' : "Регистрация"}</h2>
         <form className="regForm" id="registration-form">
+          <h2 className="regTitle">{isLogin ? 'Войти в систему' : "Регистрация"}</h2>
           {!isLogin ? 
           <>
           <input className="regInput" type="text" maxLength={15} placeholder="Введите имя ребенка" value={name} onChange={e => setName(e.target.value)} /> 
@@ -213,17 +117,15 @@ const Auth = observer(() =>{
           </div>
           <div className="regButtons">
             
-            <button className="regButton" onClick={(e) => {
-  e.preventDefault(); // Добавьте эту строку
+            <button className="reg_button" onClick={(e) => {
+  e.preventDefault();
   click();}} >
               {isLogin ? 'Войти' : 'Регистрация'}
             </button>
-            <button className="backButton" type="submit">
-              <a className="regA" href="#" onClick={(e) => {
-                e.preventDefault();
-                window.history.go(-1);
-              }}>Назад</a>
-            </button>
+            <NavLink to={MAIN_ROUTE}>
+            <button className="back_button" type="submit">
+              Назад
+            </button></NavLink>
             {isLogin ?
               <p className="regP">
                 Нет аккаунта? <NavLink to={REGISTRATION_ROUTE} className="regSpan">Зарегистрируйся!</NavLink>

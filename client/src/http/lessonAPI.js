@@ -55,6 +55,6 @@ export const updateAge = async (ageID, updatedAge) => {
 };
 
 export const updateCategory = async (categoryID, updatedCategory) => {
-  const { data } = await $authHost.put(`api/category/${categoryID}`, updatedCategory);
-  return data;
+    const { data } = await $authHost.put(`api/category/${categoryID}`, updatedCategory);
+    return data;
 };

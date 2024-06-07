@@ -57,7 +57,7 @@ const MainNavBar = observer(() => {
                     <li className="child_menu_item original-text ">
                       <NavLink to={EVENTS_ROUTE} className="child_menu_link child_menu_icon">
                         <img src={events} alt=""  />
-                        <span className="translated-text">Вакыйгалар</span>
+                        <span className="translated-text">Чаралар</span>
                       </NavLink>
                     </li>
                   </ul>

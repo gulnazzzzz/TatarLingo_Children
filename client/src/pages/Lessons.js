@@ -7,7 +7,7 @@ import {fetchAges, fetchCategories, fetchLessons} from "../http/lessonAPI";
 import '../index.css';
 import CategoryBar from '../components/CategoryBar';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Lessons = observer(() => {
     const {lesson} = useContext(Context)
@@ -30,23 +30,16 @@ const Lessons = observer(() => {
     }, [lesson]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>Загрузка...</div>;
     }
-
-    // useEffect(() => {
-    //     fetchLessons(lesson.selectedType.id, lesson.selectedBrand.id).then(data => {
-    //         lesson.setLessons(data.rows)
-    //         // lesson.setTotalCount(data.count)
-    //     })
-    // }, [lesson.page, lesson.selectedType, lesson.selectedBrand,])
 
 return (
     <div className="container">
+            <LessonList lessons={lesson.lessons}></LessonList>
             <div className="sidebar">
                 <AgeBar></AgeBar>
                 <CategoryBar></CategoryBar>
             </div>
-            <LessonList lessons={lesson.lessons}></LessonList>
         </div>
     );
 })

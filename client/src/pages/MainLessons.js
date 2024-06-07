@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import '../index.css';
+import MainLesson from '../assets/MainLessons.svg';
 
 export default function MainLessons() {
   return (
     <div>
-      MainLessons
+      <img className="mainPic" src={MainLesson} />
     </div>
   );
 }

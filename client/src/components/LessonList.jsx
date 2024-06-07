@@ -28,7 +28,7 @@ const LessonList = observer(() => {
           <div className="lessons-grid">
             {lesson.filteredLessons.filter(lesson => lesson.lessonCategoryLessonCategoryID === lessonCategory.lessonCategoryID).map(lesson => (
               <Link key={lesson.lessonID} to={`/lesson/${lesson.lessonID}`}>
-                <img width={50} height={50} src={process.env.REACT_APP_API_URL + `static/` + lesson.img} alt={lesson.title} />
+                <img width={150} height={150} src={process.env.REACT_APP_API_URL + `static/` + lesson.img} alt={lesson.title} />
                 <p>{lesson.title}</p>
               </Link>
             ))}

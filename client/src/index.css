@@ -611,12 +611,14 @@ a {
 /* Авторизация и регистрация */
 
 .regPage {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow: hidden;
+  color: #fff;
+  
 }
 
-.reg_title {
+.regTitle {
   text-align: center;
   font-size: 26px;
   font-weight: 600;
@@ -634,7 +636,7 @@ a {
   z-index: -1;
 }
 
-.auth-container {
+.regForm {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -644,7 +646,20 @@ a {
   width: 380px;
   display: block;
   border-radius: 30px;
-  padding: 30px 0px;
+  padding: 22px 0px;
+}
+
+.regA {
+  color: #fff;
+}
+
+.regInput {
+  border-radius: 30px;
+  width: 200px;
+  height: 15px;
+  padding: 12px 22px;
+  border: none;
+  margin-bottom: 10px;
 }
 
 .logo {
@@ -702,25 +717,11 @@ form {
   margin-left: 45%;
 }
 
-.reg_buttons {
-  width: 380px;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 700;
-  height: 60px;
-  /* Увеличил высоту для двух строк */
-  display: flex;
-  /* Добавил display: flex; */
-  flex-direction: column;
-  /* Установил направление колонкой */
-  justify-content: center;
-  /* Выравнил по центру по вертикали */
-  margin-top: 20px;
-}
 
 .reg_button,
 .back_button {
-  width: 280px;
+  width: 242px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -732,30 +733,51 @@ form {
   background-color: transparent;
   color: #fff;
   cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
+
+
 
 .reg_button {
   border: 1px #fff solid;
 }
 
-.reg_p {
+.back_button {
+}
+
+.regP {
   margin-top: 15px;
   font-size: 10px;
   color: #fff;
+  font-size: 14px;
 }
 
-.reg_span {
+.regSpan {
   text-decoration: underline;
   color: #fff;
-}
-
-.reg_a {
-  text-decoration: none;
-  color: #fff;
+  font-size: 14px;
 }
 
 
 
+.regButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+
+.regLogoBlock {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+}
 
 
 
@@ -768,9 +790,12 @@ form {
   padding: 20px;
 }
 
+
 .sidebar {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  /* Pushes the sidebar to the right */
 }
 
 .ages,
@@ -938,9 +963,6 @@ button {
   margin: 20px;
 }
 
-.sidebar {
-  padding: 10px;
-}
 
 .main-content {
   padding: 10px;
@@ -1407,4 +1429,258 @@ button {
 .categories .selected {
   color: red;
   /* Дополнительные стили для выделения */
+}
+
+h1 {
+  margin: 0;
+}
+
+.lessonBlock {
+  background-color: #fff;
+  width: 480px;
+  height: 440px;
+  margin: 0 auto;
+  border-radius: 30px;
+  border: 1px solid #609881;
+  padding: 16px 37px;
+  position: relative;
+}
+
+.audio-text {
+  display: flex;
+  gap: 20px;
+
+}
+
+.lessonText {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.correct-wrongAnswers {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 26px;
+  margin-bottom: 10px;
+}
+
+.correct-wrongAnswerBlock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+
+
+
+.lessonImg {
+  cursor: pointer;
+}
+
+.centeredImage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+  height: 180px;
+}
+
+.centeredContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Центрируем по вертикали */
+  justify-content: center;
+  /* Центрируем по горизонтали */
+}
+
+.backLesson {
+  position: absolute;
+  /* Устанавливаем абсолютное позиционирование */
+  top: 24px;
+  /* Задаем расстояние от верхней части контейнера */
+  left: 30px;
+  cursor: pointer;
+  /* Меняем курсор при наведении */
+  display: flex;
+  /* Используем flex для выравнивания содержимого */
+  align-items: center;
+  /* Выравниваем элементы по вертикали */
+}
+
+.lessonImages {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lessonImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #C8C8C8;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lessonImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.fourImages {
+  width: 120px;
+  height: 120px;
+}
+
+.lessonButtons {
+  display: flex;
+  justify-content: center;
+  /* Центрируем кнопки */
+  gap: 20px;
+  position: absolute;
+  /* Абсолютное позиционирование контейнера */
+  bottom: 20px;
+  /* Отступ от нижнего края */
+  left: 50%;
+  /* Центрируем контейнер горизонтально */
+  transform: translateX(-50%);
+  /* Смещаем контейнер на половину его ширины влево */
+}
+
+.lessonButton {
+  width: 200px;
+  height: 48px;
+  border-radius: 30px;
+  background-color: #58C024;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.lessonButton:hover {
+  background-color: #4AA91F;
+}
+
+.lessonBut {
+  position: absolute;
+    /* Устанавливаем абсолютное позиционирование */
+    bottom: 30px;
+    /* Отступ от нижнего края */
+    left: 50%;
+    /* Располагаем кнопку по центру горизонтально */
+    transform: translateX(-50%);
+    /* Смещаем кнопку на половину своей ширины влево */
+    width: 220px;
+    height: 55px;
+    border-radius: 30px;
+    background-color: #58C024;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.lessonBut:hover {
+  background-color: #4AA91F;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+
+.mainPic {
+  max-width: 1142px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 0 25px;
+  /* Добавляем отступы по бокам */
+}
+
+@media screen and (max-width: 1142px) {
+  .mainPic {
+    max-width: calc(100% - 60px);
+    /* Уменьшаем ширину изображения на сумму отступов */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainPic {
+    max-width: calc(100% - 30px);
+    /* Уменьшаем ширину изображения на сумму отступов */
+  }
+}
+
+
+.ages {
+  position: relative;
+  width: 200px;
+  /* Настройте ширину по необходимости */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  margin-top: 5px;
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f1f1f1;
 }
