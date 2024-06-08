@@ -1684,3 +1684,30 @@ h1 {
 .dropdown-menu li:hover {
   background-color: #f1f1f1;
 }
+
+
+.lessonAgeUl {
+  padding: 0;
+  margin-left: 5px;
+}
+
+.lessonAgeLi {
+  list-style-type: none;
+  /* Убирает маркеры списка */
+  cursor: pointer;
+  /* Делает элементы кликабельными */
+  padding: 4px 0;
+
+  /* Добавляет отступы для лучшего внешнего вида */
+}
+
+.lessonAgeLi:hover {
+  border-radius: 10px;
+  border: 1px solid #cacaca;
+  padding: 4px 8px;
+  /* Добавляет эффект при наведении */
+}
+
+.lessonCategoryH3 {
+  margin-bottom: 0px;
+}

@@ -16,17 +16,19 @@ const CategoryBar = observer(() => {
 
     return (
         <div className="categories">
-            <h3>Категории:</h3>
-            <button onClick={handleShowAllCategories}>Все категории</button>
-            <ul>
+            <h3 className='lessonCategoryH3'>Категории:</h3>
+            
+            <ul className='lessonAgeUl'>
+                <li className='lessonAgeLi' onClick={handleShowAllCategories}>Все категории</li>
                 {lesson.categories.map(lessonCategory => (
                     <li
-                        key={lessonCategory.lessonCategoryID}
-                        className={lesson.selectedCategory === lessonCategory ? "selected" : ""}
-                        onClick={() => handleCategoryClick(lessonCategory.lessonCategoryID)}
-                    >
-                        {lessonCategory.name}
-                    </li>
+    key={lessonCategory.lessonCategoryID}
+    className={`lessonAgeLi ${lesson.selectedCategory === lessonCategory ? "selected" : ""}`}
+    onClick={() => handleCategoryClick(lessonCategory.lessonCategoryID)}
+>
+    {lessonCategory.name}
+</li>
+
                 ))}
             </ul>
         </div>
