@@ -12,11 +12,16 @@ const FourthBlock = ({ onAnswer, onBack, onNext }) => {
   const audioRef = useRef(null);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const correctAnswer = bear; // Устанавливаем правильный ответ
 
-  const checkAnswer = (correct) => {
-    setIsCorrect(correct);
+  const checkAnswer = () => {
+    console.log('Selected image:', selectedImage);
+    console.log('Correct answer:', correctAnswer);
+    const isAnswerCorrect = selectedImage === correctAnswer;
+    console.log('Is answer correct:', isAnswerCorrect);
+    setIsCorrect(isAnswerCorrect);
     setShowAnswer(true);
-    onAnswer(correct);
+    onAnswer(isAnswerCorrect);
   };
 
   useEffect(() => {
@@ -34,6 +39,11 @@ const FourthBlock = ({ onAnswer, onBack, onNext }) => {
     }
   };
 
+  const handleBack = () => {
+    // Передаем в onBack информацию о том, что нужно отобразить предыдущий блок
+    onBack();
+  };
+
   return (
     <div className='lessonBlock'>
       {!showAnswer ? (
@@ -45,41 +55,40 @@ const FourthBlock = ({ onAnswer, onBack, onNext }) => {
           </div>
           <div className='lessonImages'>
             <div className='lessonImage fourImages' style={{ border: selectedImage === bear2 ? '1px solid #656565' : '1px solid #C8C8C8' }} onClick={() => setSelectedImage(bear2)} >
-              <img src={bear2} />
+              <img src={bear2} alt="bear2" />
             </div>
             <div className='lessonImage fourImages' style={{ border: selectedImage === ball ? '1px solid #656565' : '1px solid #C8C8C8' }} onClick={() => setSelectedImage(ball)}>
-              <img src={ball} />
+              <img src={ball} alt="ball" />
             </div>
-            <div className='lessonImage fourImages' style={{ border: selectedImage === ball2 ? '1px solid #656565' : '1px solid #C8C8C8' }}  onClick={() => setSelectedImage(ball2)} >
-              <img src={ball2}/>
+            <div className='lessonImage fourImages' style={{ border: selectedImage === ball2 ? '1px solid #656565' : '1px solid #C8C8C8' }} onClick={() => setSelectedImage(ball2)} >
+              <img src={ball2} alt="ball2"/>
             </div>
-            <div className='lessonImage fourImages' style={{ border: selectedImage === bear ? '1px solid #656565' : '1px solid #C8C8C8' }}  onClick={() => setSelectedImage(bear)} >
-              <img src={bear}/>
+            <div className='lessonImage fourImages' style={{ border: selectedImage === bear ? '1px solid #656565' : '1px solid #C8C8C8' }} onClick={() => setSelectedImage(bear)} >
+              <img src={bear} alt="bear"/>
             </div>
           </div>
           <div className='lessonButtons'>
-            <button onClick={onBack} className='lessonButton'>Назад</button>
-            <button onClick={() => checkAnswer(selectedImage === bear)} className='lessonButton'>Ответить</button>
+            <button onClick={handleBack} className='lessonButton'>Назад</button>
+            <button onClick={checkAnswer} className='lessonButton'>Ответить</button>
           </div>
         </>
       ) : (
         <>
           <div className='lessonImages'>
             <div className='lessonImage' >
-              <img src={bear2} style={{ border: selectedImage === bear2 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+              <img src={bear2} style={{ border: selectedImage === bear2 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }} alt="bear2"/>
             </div>
             <div className='lessonImage'>
-              <img src={ball}  style={{ border: selectedImage
-              === ball ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+              <img src={ball} style={{ border: selectedImage === ball ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }} alt="ball"/>
             </div>
             <div className='lessonImage' >
-              <img src={ball2} style={{ border: selectedImage === ball2 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+              <img src={ball2} style={{ border: selectedImage === ball2 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }} alt="ball2"/>
             </div>
             <div className='lessonImage' >
-              <img src={bear} style={{ border: selectedImage === bear ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+              <img src={bear} style={{ border: selectedImage === bear ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }} alt="bear"/>
             </div>
           </div>
-          <Answer isCorrect={isCorrect} onNext={onNext} />
+          <Answer isCorrect={isCorrect} onNext={onNext} onBack={handleBack} />
         </>
       )}
     </div>

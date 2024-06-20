@@ -14,6 +14,7 @@ export const EVENT_ROUTE = '/event'
 
 export const LESSONS_ROUTE = '/lessons'
 export const LESSON_ROUTE = '/lesson'
+export const GAMES_ROUTE = '/games'
 export const AWARDS_ROUTE = '/awards'
 export const MATERIALS_ROUTE = '/materials'
 export const PROFILE_ROUTE = '/profile'

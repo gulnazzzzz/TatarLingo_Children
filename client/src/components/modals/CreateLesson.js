@@ -270,7 +270,7 @@ const CreateLesson = observer(({ show, onHide }) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Добавить урок</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button" className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <div className="dropdown">
@@ -293,14 +293,14 @@ const CreateLesson = observer(({ show, onHide }) => {
                             ))}
                         </div>
                     </div>
-                    <input
+                    <input className="modalForm"
                         type="text"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                         placeholder="Введите название урока"
                     />
                     
-                    <input
+                    <input className="modalForm"
                         type="file"
                         onChange={selectFile}
                     />
@@ -309,25 +309,25 @@ const CreateLesson = observer(({ show, onHide }) => {
 
                     {theoryBlocks.map((block, index) => (
                         <div key={index}>
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.audio || ''}
                                 onChange={e => handleTheoryChange(index, 'audio', e.target.value)}
                                 placeholder="Аудио (URL)"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.tatarText || ''}
                                 onChange={e => handleTheoryChange(index, 'tatarText', e.target.value)}
                                 placeholder="Текст на татарском"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.translatedText || ''}
                                 onChange={e => handleTheoryChange(index, 'translatedText', e.target.value)}
                                 placeholder="Перевод текста"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="file"
                                 onChange={e => selectTheoryBlockImage(index, e)}
                             />
@@ -336,41 +336,41 @@ const CreateLesson = observer(({ show, onHide }) => {
 
                     {taskBlocks.map((block, index) => (
                         <div key={index}>
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.audio || ''}
                                 onChange={e => handleTaskChange(index, 'audio', e.target.value)}
                                 placeholder="Аудио (URL)"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.tatarText || ''}
                                 onChange={e => handleTaskChange(index, 'tatarText', e.target.value)}
                                 placeholder="Текст на татарском"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="text"
                                 value={block.translatedText || ''}
                                 onChange={e => handleTaskChange(index, 'translatedText', e.target.value)}
                                 placeholder="Перевод текста"
                             />
-                            <input
+                            <input className="modalForm"
                                 type="file"
                                 onChange={e => selectTaskBlockCorrectImage(index, e)}
                             />
-                            <input
+                            <input className="modalForm"
                                 type="file"
                                 onChange={e => selectTaskBlockWrongImage(index, e)}
                             />
                         </div>
                     ))}
 
-                    <button onClick={addTheoryBlock}>Добавить блок теории</button>
-                    <button onClick={addTaskBlock}>Добавить блок задания</button>
+                    {/* <button onClick={addTheoryBlock}>Добавить блок теории</button>
+                    <button onClick={addTaskBlock}>Добавить блок задания</button> */}
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    <button onClick={addLesson}>Добавить</button>
+                    <button className="modalClose" onClick={onHide}>Закрыть</button>
+                    <button className="modalClick" onClick={addLesson}>Добавить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

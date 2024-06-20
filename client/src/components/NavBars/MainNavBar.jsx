@@ -19,7 +19,7 @@ const MainNavBar = observer(() => {
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
-    navigate('/login'); // Переход на страницу логина после выхода
+    navigate('/login');
   }
 
   return (
@@ -31,21 +31,21 @@ const MainNavBar = observer(() => {
                 <nav className="child_menu">
                   <ul className="child_menu_list">
                     <li className="child_menu_item original-text ">
-                      <NavLink to={MAINLESSONS_ROUTE} className="original-text child_menu_link child_menu_icon">
+                      <NavLink to={MAINLESSONS_ROUTE} className="child_menu_link child_menu_icon">
                         <img src={lessons} alt="" />
-                        <span className="translated-text">Дэреслэр</span>
+                        <span className="translated-text">Дәресләр</span>
                       </NavLink>
                     </li>
                     <li className="child_menu_item original-text ">
-                      <NavLink to={MAINAWARDS_ROUTE} className="original-text child_menu_link child_menu_icon">
+                      <NavLink to={MAINAWARDS_ROUTE} className="child_menu_link child_menu_icon">
                         <img src={awards} alt="" />
-                        <span className="translated-text">Булэклэр</span>
+                        <span className="translated-text">Бүләкләр</span>
                       </NavLink>
                     </li>
                     <li className="child_menu_item original-text ">
-                      <NavLink to={MAINREPORTS_ROUTE} className="original-text child_menu_link child_menu_icon">
+                      <NavLink to={MAINREPORTS_ROUTE} className="child_menu_link child_menu_icon">
                         <img src={reports} alt="" />
-                        <span className="translated-text">Атналык кузэту</span>
+                        <span className="translated-text">Атналык статистика</span>
                       </NavLink>
                     </li>
                     <li className="child_menu_item original-text">
@@ -68,8 +68,8 @@ const MainNavBar = observer(() => {
               <div className="child_header_right_container_auth">
                 <div className="child_header_right">
                   <img className="right_img" src={userImage} alt="пользователь" />
-                  <p className="menu__link">Минем кабинет</p>
-                  <span className="translated-text">Мой кабинет</span>
+                  <p className="menu__link">Мой кабинет</p>
+                  <span className="translated-text">Минем кабинет</span>
                 </div>
               </div>
             </NavLink>

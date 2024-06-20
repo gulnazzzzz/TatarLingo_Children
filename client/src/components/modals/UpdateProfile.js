@@ -47,11 +47,11 @@ const UpdateProfile = observer(({ show, onHide, profileData, setProfileData }) =
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Редактировать профиль</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button"  className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
-                    <input type="file" onChange={selectFile} />
-                    <input
+                    <input type="file"  className="modalForm" onChange={selectFile} />
+                    <input className="modalForm"
                         type="text"
                         name="name"
                         value={profileData.name}
@@ -59,7 +59,7 @@ const UpdateProfile = observer(({ show, onHide, profileData, setProfileData }) =
                         onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
                         placeholder="Введите имя"
                     />
-                    <input
+                    <input className="modalForm"
                         type="date"
                         name="birthday"
                         value={profileData.birthday}
@@ -68,8 +68,8 @@ const UpdateProfile = observer(({ show, onHide, profileData, setProfileData }) =
                     />
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    <button onClick={editProfile}>Сохранить изменения</button>
+                    <button className="modalClose" onClick={onHide}>Закрыть</button>
+                    <button className="modalClick" onClick={editProfile}>Сохранить изменения</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

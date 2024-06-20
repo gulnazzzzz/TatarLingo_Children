@@ -8,3 +8,4 @@ router.get('/', categoryController.getAll);
 router.put('/:categoryID', checkRole('ADMIN'), categoryController.update);
 
 module.exports = router;
+

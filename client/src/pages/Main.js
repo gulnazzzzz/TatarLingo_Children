@@ -6,6 +6,7 @@ import Second from '../assets/SecondBlock1.svg';
 import MainLearn from '../assets/MainLearn.svg';
 import MainPlay from '../assets/MainPlay.svg';
 import Accordion from '../components/Accordion'; 
+import Footer from '../components/Footer'; 
 
 export default function Main() {
 
@@ -46,6 +47,7 @@ export default function Main() {
 });
 
   return (
+    <>
     <main className="main">
       <section className="mainPage">
           <div className="mainView__block" >
@@ -55,20 +57,20 @@ export default function Main() {
                 className={`mainView_button original-text ${background === MainBlock ? 'active_button' : ''}`} 
                 onClick={handleFirstButton}>
                 Детсадовцы 3+
-                <span className="translated-text">Бакчага йоргэн балалар</span>
+                <span className="translated-text">Бакчага йөргән балалар</span>
               </button>
               <button 
                 className={`mainView_button original-text ${background === Second ? 'active_button' : ''}`} 
                 onClick={handleSecondButton}>
                 Дошколята 6-7
-                <span className="translated-text">Мэктэпкэчэ яшьтэге балалар</span>
+                <span className="translated-text">Мәктәпкәчә яшьтәге балалар</span>
               </button>
             </div>
           </div>
 
 
           <p className="main__title original-text">Что такое TatarLingo?
-          <span className="translated-text">TatarLingo - нэрсэ ул?</span></p>
+          <span className="translated-text">TatarLingo - нәрсә ул?</span></p>
           <div className="mainView__blockw" >
             <img className="mainView__img" src={backgroundWhat} alt="Background" />
             <div className="main_buttonsw">
@@ -76,7 +78,7 @@ export default function Main() {
                 className={`mainView_buttonw original-text ${backgroundWhat === MainLearn ? 'active_buttonw' : ''}`} 
                 onClick={handleLearnButton}>
                 Учись
-                <span className="translated-text">Ойрэн</span>
+                <span className="translated-text">Өйрән</span>
               </button>
               <button 
                 className={`mainView_buttonw original-text ${backgroundWhat === MainPlay ? 'active_buttonw' : ''}`} 
@@ -88,11 +90,12 @@ export default function Main() {
           </div>
 
           <p id="mainQuestions__block" className="main__title original-text">Часто задаваемые вопросы
-          <span className="translated-text">Еш бирелэ торган сораулар</span>
+          <span className="translated-text">Еш бирелә торган сораулар</span>
           </p>
           <Accordion />
-
       </section>
     </main>
+    <Footer />
+    </>
   );
 }

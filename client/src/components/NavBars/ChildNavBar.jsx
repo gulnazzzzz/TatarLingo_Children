@@ -4,6 +4,7 @@ import '../../index.css';
 import { NavLink, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import bigLogo from '../../assets/childLogo.svg'
+import game from '../../assets/play.svg'
 import lessons from '../../assets/lessons.svg'
 import awards from '../../assets/awards.svg'
 import reports from '../../assets/reports.svg'
@@ -12,19 +13,12 @@ import events from '../../assets/events.svg'
 import childPhoto from '../../assets/girl.svg'
 import rightArrow from '../../assets/rightArrow.svg'
 import userImage from '../../assets/user.png'
-import { ADMIN_ROUTE, LESSONS_ROUTE, LESSON_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE, MAIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE, EVENT_ROUTE } from "../../utils/consts"
+import { ADMIN_ROUTE, GAMES_ROUTE, LESSONS_ROUTE, LESSON_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE, MAIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE, EVENT_ROUTE } from "../../utils/consts"
 
 
 const ChildNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
-
-  // const logOut = () => {
-  //   localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
-  //   user.setUser({});  // Обнуление данных пользователя
-  //   user.setIsAuth(false);  // Обновление состояния аутентификации
-  //   navigate(MAIN_ROUTE);
-  // }
   console.log(user.user.name); 
   console.log(user.user); 
   console.log(process.env.REACT_APP_API_URL)
@@ -40,9 +34,15 @@ const ChildNavBar = observer(() => {
               <div className="child_header_left">
                 <nav className="child_menu">
                   <ul className="child_menu_list">
+                    
                     <li className="child_menu_item">
-                      <NavLink to={MAIN_ROUTE} className="child_menu_link child_menu_icon">
+                      <NavLink to={LESSONS_ROUTE} className="child_menu_link child_menu_icon">
                         <img src={bigLogo} alt="Логотип" />
+                      </NavLink>
+                    </li>
+                    <li className="child_menu_item">
+                      <NavLink to={GAMES_ROUTE} className="child_menu_link child_menu_icon">
+                        <img src={game} alt="Логотип" />
                       </NavLink>
                     </li>
                     <li className="child_menu_item">
@@ -69,7 +69,6 @@ const ChildNavBar = observer(() => {
                 </nav>
               </div>
             </div>
-            {/* <button onClick={logOut} className="child_name_link">Выйти</button> */}
             <NavLink to={PROFILE_ROUTE} className="child_name_link">
               <div className="child_header_right_container ">
                 <div className="child_header_right">
@@ -81,7 +80,6 @@ const ChildNavBar = observer(() => {
               </div>
             </NavLink>
           </div>
-          {/* <button onClick={logOut} className="child_name_link">Выйти</button> */}
         </header>
     </div>
   );

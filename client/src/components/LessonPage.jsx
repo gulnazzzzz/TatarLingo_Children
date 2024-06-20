@@ -44,17 +44,22 @@ const LessonPage = () => {
     };
 
     return (
-        <div style={backgroundStyle}>
-            {/* <h1>Lesson {lessonID}</h1> */}
-            <button className='backButton backLesson' onClick={() => navigate(-1)}>
-                <img src={home} alt="Back"/>
-                            <span>НА ГЛАВНУЮ</span>
-                        </button>
-            <Suspense fallback={<div>Загрузка...</div>}>
-                {LessonContent ? <LessonContent /> : <p>Урок не найден.</p>}
-            </Suspense>
-        </div>
-    );
+    <div style={backgroundStyle}>
+        {/* <h1>Lesson {lessonID}</h1> */}
+        <button className='backButton backLesson' onClick={() => navigate(-1)}>
+            <img src={home} alt="Back"/>
+            <span>НА ГЛАВНУЮ</span>
+        </button>
+        <Suspense fallback={<div>Загрузка...</div>}>
+            {LessonContent ? <LessonContent /> : (
+                <p className="centered-message">
+                    Урок скоро появится. Пожалуйста, подожди.<br/>
+                    <div className="tat-centered-message">Дәрес тиздән әзер булачак. Зинһар, көт.</div>
+                </p>
+            )}
+        </Suspense>
+    </div>
+);
 };
 
 export default LessonPage;

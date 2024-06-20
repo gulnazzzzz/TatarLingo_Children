@@ -4,21 +4,19 @@ import audioIcon from '../../assets/audio.svg';
 
 const praiseMessages = [
   { audio: one, text: 'Молодец!', translation: 'Афарин!' },
-  { audio: one, text: 'Отлично!', translation: 'Шэп!' }
+  { audio: one, text: 'Отлично!', translation: 'Шәп!' }
 ];
 
 const retryMessages = [
-  { audio: one, text: 'Попробуй еще раз!', translation: 'Тагын бер тапкыр тырыш!' },
-  { audio: one, text: 'Ой-ой!', translation: 'ой-ой!' }
+  { audio: one, text: 'Попробуй еще раз!', translation: 'Тагын бер тапкыр тырышып кара!' },
+  { audio: one, text: 'Ой-ой! Подумай еще раз.', translation: 'Ой-ой! Уйлап кара.' }
 ];
 
-const Answer = ({ isCorrect, onNext, onBack }) => {
+const Answer = ({ isCorrect, onNext, onBack, setShowAnswer }) => {
   const audioRef = useRef(null);
   const message = isCorrect
     ? praiseMessages[Math.floor(Math.random() * praiseMessages.length)]
     : retryMessages[Math.floor(Math.random() * retryMessages.length)];
-
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,13 +25,18 @@ const Answer = ({ isCorrect, onNext, onBack }) => {
       }
     }, 1000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [message]);
 
   const handleAudioClick = () => {
     if (audioRef.current) {
       audioRef.current.play();
     }
   };
+
+  // const handleBack = () => {
+  //   setShowAnswer(false); // Скрыть блок Answer при возврате к предыдущему блоку
+  //   onBack(); // Переход к предыдущему блоку
+  // };
 
   return (
     <div className='lessonBlock'>
@@ -44,12 +47,7 @@ const Answer = ({ isCorrect, onNext, onBack }) => {
         <p className='lessonText'>{message.translation}</p>
       </div>
       <div className="lessonButtons">
-        
-        {isCorrect ? (
-          <button onClick={onBack} className='lessonButton'>Назад</button>
-        ) : (
-          <button onClick={onBack} className='lessonButton'>Попробовать снова</button> 
-        )}
+        <button onClick={onBack} className='lessonButton lessonReturnToTask'>Назад</button>
         <button onClick={onNext} className='lessonButton'>Дальше</button>
       </div>
     </div>

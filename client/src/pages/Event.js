@@ -14,7 +14,7 @@ const Event = () => {
     }, [eventID]);
 
     if (!event) {
-        return <div>Loading event details...</div>;
+        return <div>Загрузка...</div>;
     }
 
     const imageUrl = `${process.env.REACT_APP_API_URL}static/${event.img}`;

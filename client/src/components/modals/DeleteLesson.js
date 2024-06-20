@@ -34,7 +34,7 @@ const DeleteLesson = observer(({ show, onHide }) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Удалить урок</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button"  className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <select value={selectedLessonID} onChange={e => setSelectedLessonID(e.target.value)}>
@@ -47,8 +47,8 @@ const DeleteLesson = observer(({ show, onHide }) => {
                     </select>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    <button onClick={handleDelete} disabled={!selectedLessonID}>Удалить</button>
+                    <button  className="modalClose" onClick={onHide}>Закрыть</button>
+                    <button  className="modalClick" onClick={handleDelete} disabled={!selectedLessonID}>Удалить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

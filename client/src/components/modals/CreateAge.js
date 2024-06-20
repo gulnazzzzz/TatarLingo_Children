@@ -19,7 +19,7 @@ const CreateAge = ({show, onHide}) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title">Добавить возраст</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button"  className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <input
@@ -30,8 +30,8 @@ const CreateAge = ({show, onHide}) => {
                     />
                 </div>
                 <div className="modal-footer">
-                    <button type="button" onClick={onHide}>Закрыть</button>
-                    <button type="button" onClick={addAge}>Добавить</button>
+                    <button type="button" className="modalClose" onClick={onHide}>Закрыть</button>
+                    <button type="button" className="modalClick" onClick={addAge}>Добавить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

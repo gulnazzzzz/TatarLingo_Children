@@ -51,7 +51,7 @@ const UpdateEvent = observer(({ show, onHide }) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Редактировать мероприятие</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button"  className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     {loading && <p>Загрузка...</p>}
@@ -60,7 +60,7 @@ const UpdateEvent = observer(({ show, onHide }) => {
                             <h5>Выберите мероприятие для редактирования</h5>
                             <ul>
                                 {events.map(ev => (
-                                    <li key={ev.eventID} onClick={() => setSelectedEventID(ev.eventID)}>
+                                    <li  className='lessonAgeLi' key={ev.eventID} onClick={() => setSelectedEventID(ev.eventID)}>
                                         {ev.title}
                                     </li>
                                 ))}
@@ -116,8 +116,8 @@ const UpdateEvent = observer(({ show, onHide }) => {
                     )}
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    {selectedEventID && <button onClick={editEvent}>Сохранить изменения</button>}
+                    <button  className="modalClose" onClick={onHide}>Закрыть</button>
+                    {selectedEventID && <button className="modalClick" onClick={editEvent}>Сохранить изменения</button>}
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

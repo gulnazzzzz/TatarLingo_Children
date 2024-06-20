@@ -38,7 +38,7 @@ const UpdateEventCategory = observer(({ show, onHide }) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Редактировать категорию мероприятия</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button  className="modalClose" type="button" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     {loading && <p>Загрузка...</p>}
@@ -47,7 +47,7 @@ const UpdateEventCategory = observer(({ show, onHide }) => {
                             <h5>Выберите категорию для редактирования</h5>
                             <ul>
                                 {eventCategories.map(cat => (
-                                    <li key={cat.eventCategoryID} onClick={() => setSelectedCategoryID(cat.eventCategoryID)}>
+                                    <li  className='lessonAgeLi' key={cat.eventCategoryID} onClick={() => setSelectedCategoryID(cat.eventCategoryID)}>
                                         {cat.name}
                                     </li>
                                 ))}
@@ -65,7 +65,7 @@ const UpdateEventCategory = observer(({ show, onHide }) => {
                     )}
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
+                    <button  className="modalClose" onClick={onHide}>Закрыть</button>
                     {selectedCategoryID && <button onClick={editEventCategory}>Сохранить изменения</button>}
                 </div>
             </div>

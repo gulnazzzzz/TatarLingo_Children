@@ -39,7 +39,7 @@ const CreateEvent = observer(({ show, onHide }) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5>Добавить мероприятие</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button type="button"  className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <div className="dropdown">
@@ -52,44 +52,47 @@ const CreateEvent = observer(({ show, onHide }) => {
                             ))}
                         </div>
                     </div>
-                    <input
+                    <div className="modalForm">
+                            <input className="modalForm"
                         type="file"
                         onChange={selectFile}
                     />
-                    <input
+                    <input className="modalForm"
                         type="text"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                         placeholder="Введите название мероприятия"
                     />
-                    <textarea
+                    <textarea className="modalForm"
                         type="text"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         placeholder="Введите описание мероприятия"
                     />
-                    <input
+                    <input className="modalForm"
                         type="text"
                         value={dateAndTime}
                         onChange={e => setDateAndTime(e.target.value)}
                         placeholder="Введите дату и время"
                     />
-                    <input
+                    <input className="modalForm"
                         type="text"
                         value={location}
                         onChange={e => setLocation(e.target.value)}
                         placeholder="Введите место"
                     />
-                    <input
+                    <input className="modalForm"
                         type="text"
                         value={link}
                         onChange={e => setLink(e.target.value)}
                         placeholder="Вставьте ссылку на мероприятие"
                     />
+                    </div>
+                    
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    <button onClick={addLesson}>Добавить</button>
+                    <button  className="modalClose"onClick={onHide}>Закрыть</button>
+                    <button  className="modalClick" onClick={addLesson}>Добавить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

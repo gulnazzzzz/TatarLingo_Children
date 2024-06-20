@@ -29,7 +29,11 @@ const LessonList = observer(() => {
             {lesson.filteredLessons.filter(lesson => lesson.lessonCategoryLessonCategoryID === lessonCategory.lessonCategoryID).map(lesson => (
               <Link key={lesson.lessonID} to={`/lesson/${lesson.lessonID}`}>
                 <img width={150} height={150} src={process.env.REACT_APP_API_URL + `static/` + lesson.img} alt={lesson.title} />
-                <p>{lesson.title}</p>
+                <div className='lessonTitleDiv'>
+                  <p className='lessonTitle'>{lesson.title}</p>
+                </div>
+
+                
               </Link>
             ))}
           </div>

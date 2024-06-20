@@ -1,4 +1,4 @@
-import { ADMIN_ROUTE, LESSONS_ROUTE, LESSON_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE, MAIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE, EVENT_ROUTE } from "./utils/consts"
+import { ADMIN_ROUTE, LESSONS_ROUTE, LESSON_ROUTE, AWARDS_ROUTE, MATERIALS_ROUTE, PROFILE_ROUTE, MAIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, MAINLESSONS_ROUTE, MAINAWARDS_ROUTE, MAINREPORTS_ROUTE, MAINMATERIALS_ROUTE, EVENTS_ROUTE, EVENT_ROUTE, GAMES_ROUTE } from "./utils/consts"
 import Admin from "./pages/Admin"
 import Auth from "./pages/Auth"
 import Awards from "./pages/Awards"
@@ -12,6 +12,7 @@ import MainMaterials from "./pages/MainMaterials"
 import MainReports from "./pages/MainReports"
 import Materials from "./pages/Materials"
 import Profile from "./pages/Profile"
+import Games from "./pages/Games"
 import LessonPage from './components/LessonPage';
 
 
@@ -27,6 +28,10 @@ export const authRoutes = [
   {
     path: LESSON_ROUTE + '/:lessonID',
     Component: LessonPage
+  },
+  {
+    path: GAMES_ROUTE,
+    Component: Games
   },
   {
     path: AWARDS_ROUTE,

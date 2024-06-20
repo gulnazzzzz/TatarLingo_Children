@@ -61,7 +61,7 @@ const UpdateMaterial = observer(({ show, onHide }) => {
       <div className="modal-content">
         <div className="modal-header">
           <h5>Редактировать материал</h5>
-          <button type="button" onClick={onHide}>×</button>
+          <button type="button" className="modalClose" onClick={onHide}>×</button>
         </div>
         <div className="modal-body">
           {!selectedMaterialID ? (
@@ -69,7 +69,7 @@ const UpdateMaterial = observer(({ show, onHide }) => {
               <h5>Выберите материал для редактирования</h5>
               <ul>
                 {material.materials.map(mat => (
-                  <li key={mat.materialID} onClick={() => setSelectedMaterialID(mat.materialID)}>
+                  <li  className='lessonAgeLi' key={mat.materialID} onClick={() => setSelectedMaterialID(mat.materialID)}>
                     {mat.title}
                   </li>
                 ))}
@@ -87,11 +87,11 @@ const UpdateMaterial = observer(({ show, onHide }) => {
                   ))}
                 </div>
               </div>
-              <input
+              <input className="modalForm"
                 type="file"
                 onChange={selectFile}
               />
-              <input
+              <input className="modalForm"
                 type="text"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
@@ -101,8 +101,8 @@ const UpdateMaterial = observer(({ show, onHide }) => {
           )}
         </div>
         <div className="modal-footer">
-          <button onClick={onHide}>Закрыть</button>
-          {selectedMaterialID && <button onClick={editMaterial}>Сохранить изменения</button>}
+          <button  className="modalClose" onClick={onHide}>Закрыть</button>
+          {selectedMaterialID && <button  className="modalClick" onClick={editMaterial}>Сохранить изменения</button>}
         </div>
       </div>
       <div className="modal-backdrop" onClick={onHide}></div>

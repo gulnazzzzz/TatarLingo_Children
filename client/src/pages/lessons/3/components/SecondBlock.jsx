@@ -46,11 +46,11 @@ const SecondBlock = ({ onAnswer, onBack, onNext }) => {
             <p className='lessonText'>Бер санын тап.</p>
           </div>
           <div className='lessonImages'>
-            <div className='lessonImage' style={{ border: selectedImage === n1 ? '1px solid #656565' : '1px solid #C8C8C8' }}>
-              <img src={n1} onClick={() => setSelectedImage(n1)} />
+            <div onClick={() => setSelectedImage(n1)} className='lessonImage' style={{ border: selectedImage === n1 ? '1px solid #656565' : '1px solid #C8C8C8' }}>
+              <img src={n1}  />
             </div>
-            <div className='lessonImage' style={{ border: selectedImage === n2 ? '1px solid #656565' : '1px solid #C8C8C8' }}>
-              <img src={n2} onClick={() => setSelectedImage(n2)} />
+            <div onClick={() => setSelectedImage(n2)} className='lessonImage' style={{ border: selectedImage === n2 ? '1px solid #800000' : '1px solid #C8C8C8' }}>
+              <img src={n2} />
             </div>
           </div>
           <div className='lessonButtons'>
@@ -61,11 +61,11 @@ const SecondBlock = ({ onAnswer, onBack, onNext }) => {
       ) : (
         <>
           <div className='lessonImages'>
-            <div className='lessonImage' >
-              <img src={n1} style={{ border: selectedImage === n1 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+            <div className='lessonImage' onClick={() => checkAnswer(true)} style={{ border: selectedImage === n1 ? (isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}>
+              <img src={n1}/>
             </div>
-            <div className='lessonImage' >
-              <img src={n2} style={{ border: selectedImage === n2 ? (!isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}/>
+            <div className='lessonImage' onClick={() => checkAnswer(false)}  style={{ border: selectedImage === n2 ? (!isCorrect ? '3px solid green' : '3px solid red') : '1px solid #C8C8C8' }}>
+              <img src={n2}/>
             </div>
           </div>
           <Answer isCorrect={isCorrect} onNext={onNext} />

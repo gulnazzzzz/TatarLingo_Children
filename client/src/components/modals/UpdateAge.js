@@ -38,8 +38,8 @@ const UpdateAge = observer(({ show, onHide }) => {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h5>Редактировать возраст урока</h5>
-          <button type="button" onClick={onHide}>×</button>
+          <h5>Редактировать возраст</h5>
+          <button className="modalClose" type="button" onClick={onHide}>×</button>
         </div>
         <div className="modal-body">
           {!selectedAgeID ? (
@@ -47,7 +47,7 @@ const UpdateAge = observer(({ show, onHide }) => {
               <h5>Выберите возраст для редактирования</h5>
               <ul>
                 {lesson.ages.map(age => (
-                  <li key={age.lessonAgeID} onClick={() => setSelectedAgeID(age.lessonAgeID)}>
+                  <li  className='lessonAgeLi' key={age.lessonAgeID} onClick={() => setSelectedAgeID(age.lessonAgeID)}>
                     {age.name}
                   </li>
                 ))}
@@ -65,8 +65,8 @@ const UpdateAge = observer(({ show, onHide }) => {
           )}
         </div>
         <div className="modal-footer">
-          <button onClick={onHide}>Закрыть</button>
-          {selectedAgeID && <button onClick={editAge}>Сохранить изменения</button>}
+          <button className="modalClose" onClick={onHide}>Закрыть</button>
+          {selectedAgeID && <button className="modalClick" onClick={editAge}>Сохранить изменения</button>}
         </div>
       </div>
       <div className="modal-backdrop" onClick={onHide}></div>

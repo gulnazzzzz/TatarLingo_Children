@@ -43,7 +43,7 @@ const Admin = () => {
         <div className="many-container">
             <div className="radius-container">
                 <div className='radius-container-content'>
-                    <p className='page-title'>Добавление, редактирование, удаление данных</p>
+                    <p className='page-title'>Управление контентом</p>
                     <div className="adminButtons">
                         <div>
                             <button className="adminButton" onClick={() => setLessonAgeVisible(true)}>Добавить возраст</button>

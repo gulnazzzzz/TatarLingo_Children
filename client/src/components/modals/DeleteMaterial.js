@@ -30,7 +30,7 @@ const DeleteMaterial = observer(({ show, onHide }) => {
       <div className="modal-content">
         <div className="modal-header">
           <h5>Удалить материал</h5>
-          <button type="button" onClick={onHide}>×</button>
+          <button className="modalClose" type="button" onClick={onHide}>×</button>
         </div>
         <div className="modal-body">
           <select value={selectedMaterialID} onChange={e => setSelectedMaterialID(e.target.value)}>
@@ -43,8 +43,8 @@ const DeleteMaterial = observer(({ show, onHide }) => {
           </select>
         </div>
         <div className="modal-footer">
-          <button onClick={onHide}>Закрыть</button>
-          <button onClick={handleDelete} disabled={!selectedMaterialID}>Удалить</button>
+          <button className="modalClose" onClick={onHide}>Закрыть</button>
+          <button className="modalClick" onClick={handleDelete} disabled={!selectedMaterialID}>Удалить</button>
         </div>
       </div>
       <div className="modal-backdrop" onClick={onHide}></div>

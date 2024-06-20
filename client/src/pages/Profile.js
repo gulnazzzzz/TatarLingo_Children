@@ -46,14 +46,13 @@ const Profile = observer(() => {
                 <div className='radius-container-content'>
                     <div className="profileContent">
                         <div className="childInfo">
-                            <img width={200} height={200} className="child_header_photo" src={imageUrl} alt="Фото ребенка" />
-                            <p>{profileData.name}</p>
-                            <p>{age} {age >= 5 ? 'лет' : 'года'}</p>
-                            <button className='backButton' onClick={() => setProfileUpdate(true)}>
-                                <img src={home} alt="Back" />
+                            <img width={350} height={350} className="child_profile_photo" src={imageUrl} alt="Фото ребенка" />
+                            <p className="childName">{profileData.name}</p>
+                            <p className="childAge">{age} {age >= 5 ? 'лет' : 'года'}</p>
+                            <button className='backButton updateProfileButton' onClick={() => setProfileUpdate(true)}>
                                 <span>РЕДАКТИРОВАТЬ</span>
                             </button>
-                            <button onClick={logOut} className="child_name_link">Выйти</button>
+                            <button className='backButton updateProfileButton backProfileButton' onClick={logOut}>ВЫЙТИ</button>
                         </div>
                         <div className="statistics">
                             <p>Здесь будет недельная активность</p>

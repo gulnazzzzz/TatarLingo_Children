@@ -19,7 +19,7 @@ const СreateMaterialCategory = ({show, onHide}) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title">Добавить категорию обучающего материала</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <button className="modalClose" type="button" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <input
@@ -30,8 +30,8 @@ const СreateMaterialCategory = ({show, onHide}) => {
                     />
                 </div>
                 <div className="modal-footer">
-                    <button type="button" onClick={onHide}>Закрыть</button>
-                    <button type="button" onClick={addMaterialCategory}>Добавить</button>
+                    <button className="modalClose" type="button" onClick={onHide}>Закрыть</button>
+                    <button className="modalClick" type="button" onClick={addMaterialCategory}>Добавить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

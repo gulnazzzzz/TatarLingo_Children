@@ -30,8 +30,8 @@ const CreateMaterial = observer(({ show, onHide }) => {
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h5>Добавить мероприятие</h5>
-                    <button type="button" onClick={onHide}>×</button>
+                    <h5>Добавить материал</h5>
+                    <button type="button" className="modalClose" onClick={onHide}>×</button>
                 </div>
                 <div className="modal-body">
                     <div className="dropdown">
@@ -57,8 +57,8 @@ const CreateMaterial = observer(({ show, onHide }) => {
                     
                 </div>
                 <div className="modal-footer">
-                    <button onClick={onHide}>Закрыть</button>
-                    <button onClick={addMaterial}>Добавить</button>
+                    <button className="modalClose" onClick={onHide}>Закрыть</button>
+                    <button className="modalClick" onClick={addMaterial}>Добавить</button>
                 </div>
             </div>
             <div className="modal-backdrop" onClick={onHide}></div>

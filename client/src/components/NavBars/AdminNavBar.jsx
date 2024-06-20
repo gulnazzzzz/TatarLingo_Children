@@ -18,9 +18,9 @@ const AdminNavBar = observer(() => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    localStorage.removeItem('token');  // Убедитесь, что это правильный ключ
-    user.setUser({});  // Обнуление данных пользователя
-    user.setIsAuth(false);  // Обновление состояния аутентификации
+    localStorage.removeItem('token');
+    user.setUser({});
+    user.setIsAuth(false);
     navigate(MAIN_ROUTE);
   }
 
@@ -56,8 +56,18 @@ const AdminNavBar = observer(() => {
                 </nav>
               </div>
             </div>
-            <button onClick={() => navigate(ADMIN_ROUTE)} className="child_name_link">Админ панель</button>
-            <button onClick={logOut} className="child_name_link">Выйти</button>
+            <div className="adminNavBarButtons">
+              <div className="child_header_right_container butAdmin">
+                <div className="child_header_right ">
+                  <button onClick={() => navigate(ADMIN_ROUTE)} className="adminNavBar">Админ панель</button>
+                </div>
+              </div>
+            <div className="child_header_right_container logOutAdmin">
+                <div className="child_header_right ">
+                  <button onClick={logOut}  className="adminNavBar">Выйти</button>
+                </div>
+              </div>
+            </div>
           </div>
         </header>
     </div>

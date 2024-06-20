@@ -32,13 +32,13 @@ import '../index.css';
 const EventList = observer(() => {
     const { event } = useContext(Context);
 
-    if (!event.filteredEvents || event.filteredEvents.length === 0) { // Используйте отфильтрованные события
+    if (!event.filteredEvents || event.filteredEvents.length === 0) {
         return <p>Нет событий для отображения</p>;
     }
 
     return (
         <div className="cards">
-            {event.filteredEvents.slice().reverse().map(event => ( // Используйте отфильтрованные события
+            {event.filteredEvents.slice().reverse().map(event => (
                 <EventItem className="card" key={event.eventID} event={event} />
             ))}
         </div>
